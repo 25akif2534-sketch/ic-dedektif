@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>İç Dedektif - Premium Sürüm</title>
+    <!-- Premium Typewriter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --paper-color: #d1c0a8;
+            --ink-color: #2b1f1f;
+            --blood-ink: #6b1a1a;
+            --border-color: #8c7b64;
+            --tension-color: #8b0000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--ink-color);
+            font-family: 'Special Elite', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Canvas Rain Effect */
+        #rainCanvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Candle Flicker Overlay */
+        .candle-flicker {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.6) 80%, rgba(0,0,0,0.9) 100%);
+            animation: flicker 4s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            20% { opacity: 0.9; }
+            40% { opacity: 0.85; }
+            60% { opacity: 0.95; }
+            80% { opacity: 0.8; }
+            100% { opacity: 0.9; }
+        }
+
+        /* Ink Bleed Animation */
+        .ink-bleed {
+            animation: bleedIn 1.5s ease forwards;
+            filter: blur(5px);
+            opacity: 0;
+        }
+
+        @keyframes bleedIn {
+            100% { filter: blur(0px); opacity: 1; }
+        }
+
+        #game-container {
+            width: 100%;
+            max-width: 600px;
+            height: 100vh;
+            position: relative;
+            background-color: var(--paper-color);
+            background-image: 
+                radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.2) 100%),
+                url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise"/><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.1 0" in="noise"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .scene {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .scene.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Fixed Header */
+        #fixed-header {
+            position: sticky;
+            top: -20px;
+            margin: -20px -20px 15px -20px;
+            padding: 15px 20px;
+            background: rgba(10, 10, 10, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--paper-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header-title { font-size: 1rem; font-weight: bold; }
+        .header-concept { font-size: 0.85rem; opacity: 0.8; font-style: italic; text-align: center; flex: 1; margin: 0 10px; }
+        .header-timer { font-size: 1.1rem; font-weight: bold; color: #fff; }
+
+        /* Typography */
+        h1, h2, h3 { font-weight: normal; margin-bottom: 15px; text-align: center; }
+        .title { font-size: 2.2rem; color: var(--blood-ink); text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .subtitle { font-size: 1rem; color: #555; text-align: center; margin-bottom: 30px; }
+
+        /* Buttons */
+        .btn {
+            background: transparent;
+            color: var(--ink-color);
+            border: 2px solid var(--ink-color);
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            cursor: pointer;
+            margin: 10px; /* Güncelleme: 10px margin eklendi */
+            transition: all 0.2s;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .btn::after {
+            content: ''; position: absolute; top:0; left:-100%; width:100%; height:100%;
+            background: rgba(0,0,0,0.1); transition: 0.3s;
+        }
+        .btn:hover:not(:disabled)::after { left: 0; }
+        .btn:active:not(:disabled) { transform: scale(0.95); } /* Güncelleme: Tıklama efekti eklendi */
+        .btn:disabled { border-color: #888; color: #888; cursor: not-allowed; }
+
+        .btn-back { color: var(--blood-ink); border-color: var(--blood-ink); align-self: flex-start; padding: 8px 15px; font-size: 1rem; }
+        .btn-back:hover:not(:disabled) { background: rgba(107, 26, 26, 0.1); }
+
+        /* HUD: Tension & Score */
+        .hud {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--border-color);
+            margin-bottom: 15px;
+        }
+        .hud-top { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; }
+        .tension-bar-container { width: 100%; height: 8px; background: #999; border-radius: 4px; overflow: hidden; }
+        .tension-bar { height: 100%; width: 0%; background: var(--tension-color); transition: width 0.3s; }
+
+        /* Character Cards */
+        .char-card {
+            border: 2px solid var(--ink-color);
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .char-card:hover { background: rgba(0,0,0,0.05); }
+        .char-card.selected { background: rgba(0,0,0,0.1); border-color: var(--blood-ink); }
+        
+        /* Grid */
+        .grid-list { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .case-card { border: 1px solid var(--border-color); padding: 15px; text-align: center; cursor: pointer; }
+        .case-card.locked { opacity: 0.5; cursor: not-allowed; }
+
+        /* Tabs */
+        .tabs { display: flex; border-bottom: 2px solid var(--ink-color); margin-bottom: 15px; }
+        .tab-btn { flex: 1; border: none; background: none; font-family: inherit; font-size: 1rem; padding: 10px; cursor: pointer; color: #555; }
+        .tab-btn.active { color: var(--ink-color); font-weight: bold; border-bottom: 3px solid var(--blood-ink); }
+        .tab-content { display: none; flex-grow: 1; overflow-y: auto; flex-direction: column;}
+        .tab-content.active { display: flex; }
+
+        /* Clues & Interrogation */
+        .clue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;}
+        .clue-box { border: 1px dashed var(--ink-color); padding: 15px; text-align: center; cursor: pointer; min-height: 80px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1); color: #555;}
+        .clue-box.found { background: var(--paper-color); border-style: solid; color: var(--ink-color); box-shadow: inset 0 0 10px rgba(0,0,0,0.1); font-weight: bold;}
+        
+        .suspect-box { border: 1px solid var(--ink-color); padding: 15px; margin-bottom: 15px; }
+        .answer-btn { width: 100%; text-align: left; margin: 5px 0; background: none; border: 1px dotted var(--ink-color); padding: 8px; font-family: inherit; cursor: pointer; }
+        .answer-btn:hover:not(:disabled) { background: rgba(0,0,0,0.05); }
+        .answer-btn:active:not(:disabled) { transform: scale(0.98); }
+        .answer-btn.correct { background: rgba(76, 175, 80, 0.2); border-color: #2E7D32; }
+        .answer-btn.wrong { background: rgba(244, 67, 54, 0.2); border-color: #C62828; }
+
+        /* Sequence Minigame */
+        .seq-item { border: 2px solid var(--ink-color); padding: 15px; margin: 10px 0; cursor: pointer; text-align: center; }
+        .seq-item.selected { background: rgba(0,0,0,0.1); border-color: var(--blood-ink); }
+        .seq-slots { display: flex; gap: 10px; justify-content: space-between; margin-bottom: 20px; }
+        .seq-slot { flex: 1; border: 2px dashed var(--ink-color); height: 60px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: #555;}
+
+        /* Report & Achievements */
+        .achievement-toast {
+            position: fixed; top: 20px; right: 20px; background: var(--bg-color); color: #d4af37;
+            padding: 15px; border: 1px solid #d4af37; border-radius: 4px; z-index: 1000;
+            font-family: inherit; opacity: 0; transform: translateY(-20px); transition: all 0.5s;
+        }
+        .achievement-toast.show { opacity: 1; transform: translateY(0); }
+
+        /* İçgörü (Insight) Toast */
+        #insight-toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.9); color: var(--paper-color);
+            padding: 15px 20px; border-radius: 8px; border: 1px solid var(--border-color);
+            z-index: 3000; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+            text-align: center; width: 90%; max-width: 400px; font-size: 0.95rem; line-height: 1.4;
+        }
+
+        .report-section { border: 1px solid var(--ink-color); padding: 15px; margin-bottom: 15px; }
+
+        /* Manual Overlay (Nasıl Oynanır) */
+        .manual-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 2000;
+            display: flex; flex-direction: column;
+            padding: 20px;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s;
+            color: var(--paper-color);
+            overflow-y: auto;
+        }
+        .manual-overlay.active { opacity: 1; pointer-events: all; }
+        .manual-content {
+            background: var(--bg-color); border: 2px solid var(--border-color);
+            padding: 20px; border-radius: 8px; margin: auto; max-width: 500px;
+            text-align: left; line-height: 1.5; font-size: 0.95rem;
+        }
+        .manual-content h3 { color: var(--blood-ink); margin-top: 15px; margin-bottom: 5px; text-align: left; font-size: 1.1rem; }
+        .manual-content ul { margin-left: 20px; margin-bottom: 15px; }
+        .manual-content li { margin-bottom: 5px; }
+
+        /* Tutorial Overlay (3 Steps) */
+        .tutorial-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 2000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 30px;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s;
+            color: var(--paper-color);
+        }
+        .tutorial-overlay.active { opacity: 1; pointer-events: all; }
+        .tutorial-box {
+            background: var(--bg-color); border: 2px solid var(--border-color);
+            padding: 25px; border-radius: 8px; max-width: 400px;
+        }
+        .tutorial-step { display: none; }
+        .tutorial-step.active { display: block; }
+        .tutorial-btn { background: var(--paper-color); color: var(--bg-color); border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; font-family: inherit; font-size: 1.1rem; border-radius: 4px; transition: transform 0.2s;}
+        .tutorial-btn:active { transform: scale(0.95); }
+
+        /* Print Media Query */
+        @media print {
+            body { background: white; color: black; }
+            #rainCanvas, .candle-flicker, .btn { display: none !important; }
+            #game-container { box-shadow: none; max-width: 100%; height: auto; overflow: visible; background: none; }
+            .scene { position: relative; opacity: 1; display: block !important; }
+            .scene:not(#scene-report) { display: none !important; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="rainCanvas"></canvas>
+    <div class="candle-flicker"></div>
+
+    <!-- Achievement Toast -->
+    <div id="toast" class="achievement-toast">
+        <strong id="toast-title">Başarım!</strong><br>
+        <span id="toast-desc"></span>
+    </div>
+
+    <!-- Insight (İçgörü) Toast -->
+    <div id="insight-toast"></div>
+
+    <!-- Nasıl Oynanır (Manual) Overlay -->
+    <div id="manual-overlay" class="manual-overlay">
+        <div class="manual-content">
+            <h2 style="text-align:center; color: var(--paper-color); margin-bottom:20px;">🕵️‍♂️ İÇ DEDEKTİF - NASIL OYNANIR?</h2>
+            <p>Bu oyun bir cinayet vakasını çözerken, aynı zamanda kendi psikolojik yolculuğuna çıkmanı sağlar. İşte adım adım rehber:</p>
+
+            <h3>📌 1. OLAY ÖZETİNİ OKU</h3>
+            <ul>
+                <li>Her vaka başında kısa bir olay özeti gösterilir: Kim öldü, nerede, ne zaman.</li>
+                <li>"Soruşturmayı Başlat" butonuna tıklayarak araştırmana başla.</li>
+            </ul>
+
+            <h3>📌 2. OLAY YERİ - DELİLLERİ TOPLA</h3>
+            <ul>
+                <li>"Olay Yeri" sekmesine tıkla. 6 delil kartı soru işareti (?) olarak kapalıdır.</li>
+                <li>Bir delili açmak için kartın üzerine tıkla — metin ortaya çıkar.</li>
+                <li>Tekrar tıklarsan delil kapanır ve not defterinden de çıkar.</li>
+                <li style="color:#aaa; font-style:italic;">İpucu: Sadece mantıklı gördüğün delilleri açık tut!</li>
+            </ul>
+
+            <h3>📌 3. ŞÜPHELİ SORGULARI</h3>
+            <ul>
+                <li>"Sorgu" sekmesine tıkla. 3 şüpheli ile karşılaşacaksın.</li>
+                <li>Her şüpheliye 2 ayrı soru sorulur. Her soruda 2 cevap seçeneği var: biri doğru, biri yanlış.</li>
+                <li>Doğru cevap +10 puan. Yanlış cevap −10 puan ve +25 gerilim.</li>
+                <li style="color:#aaa; font-style:italic;">İpucu: Cevaplardan sonra gelen "İçgörü" mesajını oku — psikolojik ipuçları içeriyor!</li>
+            </ul>
+
+            <h3>📌 4. DELİLLERİ SEÇ VE ÇÖZ</h3>
+            <ul>
+                <li>Not Defteri sekmesinde "Analiz Et" butonuna tıkla (en az 3 delil açık olmalı).</li>
+                <li>Analiz ekranında <strong>6 delilin tamamı</strong> listelenir. 3 tanesi gerçek, 3 tanesi çeldirici.</li>
+                <li>Katili işaret eden 3 delili seç → "Bu Üçünü Bağla" butonuna tıkla.</li>
+                <li>Ardından 3 delilin <strong>kronolojik sırasını</strong> belirle: Önce ne oldu?</li>
+            </ul>
+
+            <h3 style="color: var(--tension-color);">⚠️ EĞER BAŞARISIZ OLURSAN:</h3>
+            <ul>
+                <li>Yanlış 3 delil seçtiysen: Puan düşer, gerilim artar.</li>
+                <li>Gerilim %100 dolarsa: Oyun biter.</li>
+            </ul>
+
+            <h3 style="color: #d4af37; border-top: 1px solid #555; padding-top: 15px; margin-top: 10px;">🔍 ÖRNEK VAKA ÇÖZÜMÜ — Vaka 1: Kırık Ayna</h3>
+            <p style="color:#bbb; font-size:0.9rem; margin-bottom:10px;">Olay: Eski kitabevinin arka odasında ceset bulundu. Silah yok. 3 şüpheli var.</p>
+
+            <p style="font-weight:bold; margin-bottom:5px;">Adım 1 — Delilleri incele:</p>
+            <ul style="margin-bottom:10px;">
+                <li>Kırık ayna parçası: "Kurşun izi var" → Tetik çekilen yeri işaret ediyor. ✅ Önemli.</li>
+                <li>Mektup: "Başka müşteriye ait" → Olayla ilgisi yok. ❌ Çeldirici.</li>
+                <li>Ayakkabı izi (43 numara): "Kitapçı sahibiyle eşleşiyor" → Kim buradaydı? ✅ Önemli.</li>
+                <li>Kanlı mendil: "Kan grubu kitapçı sahibiyle eşleşiyor" → Kesin bağlantı. ✅ Önemli.</li>
+            </ul>
+
+            <p style="font-weight:bold; margin-bottom:5px;">Adım 2 — Sorgu mantığı:</p>
+            <ul style="margin-bottom:10px;">
+                <li>Kitapçı Sahibi'ne "Cinayet anında ne yapıyordunuz?" diye sorduğumda "Kitapları düzenliyordum" dedi — ama gözlerini kaçırıyor. Şüpheli.</li>
+                <li>Müşteri, silah sesi duyduğunu söyledi → Olay gerçek, kaza değil.</li>
+                <li>Temizlikçi "Odaya sabah girdim" dedi → Akşamki olaydan habersiz, masum.</li>
+            </ul>
+
+            <p style="font-weight:bold; margin-bottom:5px;">Adım 3 — Mantık zinciri:</p>
+            <p style="color:#ccc; font-size:0.9rem; margin-bottom:10px;">Ayakkabı izi kitapçıya ait + kanlı mendil kan grubu eşleşiyor + silah sesini sadece müşteri duydu. Kitapçı "dışarıdaydım" diyemez çünkü izi içeride. Katil: <strong>Kitapçı Sahibi</strong>.</p>
+
+            <p style="font-weight:bold; margin-bottom:5px;">Adım 4 — Analiz + Kronoloji:</p>
+            <p style="color:#ccc; font-size:0.9rem; margin-bottom:10px;">3 doğru delil: Kırık ayna → Ayakkabı izi → Kanlı mendil. Sıra: Önce silah atıldı (ayna kırıldı), sonra kitapçı kaçmaya çalıştı (iz), sonra yaralı mendile sarıldı (mendil).</p>
+
+            <div style="text-align:center; margin-top: 30px;">
+                <button class="btn btn-back" style="margin-top:10px;" onclick="closeManual()">Anladım, başla!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Overlay (3 Steps) -->
+    <div id="tutorial-overlay" class="tutorial-overlay">
+        <div class="tutorial-box">
+            <div id="tut-step-1" class="tutorial-step active">
+                <h3 style="color: var(--paper-color);">Adım 1: Delilleri İncele</h3>
+                <p>Olay yerinde 6 delil var. Birine tıkla ve aç. Sence bu delil katili gösteriyor mu? Mantıklı olanları topla!</p>
+                <div style="margin: 20px auto; border: 1px dashed #d1c0a8; padding: 15px; width: 100px; text-align: center;">?</div>
+                <button class="tutorial-btn" onclick="nextTutorialStep(2)">İleri</button>
+            </div>
+            <div id="tut-step-2" class="tutorial-step">
+                <h3 style="color: var(--paper-color);">Adım 2: Çelişkileri Yakala</h3>
+                <p>Sorgu sekmesine geç. Şüpheli A'ya doğru cevabı ver. İpucu: Cevapları not defterine yaz, çelişkileri yakala!</p>
+                <div style="margin: 20px auto; width: 100%; height: 8px; background: #999;"><div style="width: 25%; height: 100%; background: red;"></div></div>
+                <button class="tutorial-btn" onclick="nextTutorialStep(3)">İleri</button>
+            </div>
+            <div id="tut-step-3" class="tutorial-step">
+                <h3 style="color: var(--paper-color);">Adım 3: Mantık Yürüt</h3>
+                <p>Şimdi dedektiflik başlıyor! 6 delil tekrar kapalı. Sadece 3'ü doğru. Katili gösteren 3 delili seç.</p>
+                <p style="margin-top: 10px; font-style: italic; color: #aaa;">Hatırla: Deliller arasında bağlantı kur, zamanı kontrol et, çelişkileri bul!</p>
+                <button class="tutorial-btn" onclick="closeTutorial()">Anladım</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-container">
+        
+        <!-- 1. MENU -->
+        <div id="scene-menu" class="scene active" style="justify-content: center; align-items: center;">
+            <h1 class="title ink-bleed">İç Dedektif</h1>
+            <p class="subtitle ink-bleed" style="animation-delay: 0.5s;">Premium Sürüm</p>
+            
+            <button id="btnTutorial" class="btn" style="width: 250px; margin-top: 30px;" onclick="showTutorial()">Nasıl Oynanır?</button>
+            <button id="btnStart" class="btn" style="width: 250px;" onclick="startGame()">Oyuna Başla</button>
+            <button id="btnClearData" class="btn" style="width: 250px;" onclick="clearAllData()">Kayıtları Sil</button>
+        </div>
+
+        <!-- 2. KARAKTER SEÇİMİ -->
+        <div id="scene-character" class="scene">
+            <h2 class="title">Kimliğini Seç</h2>
+            <p style="margin-bottom: 20px; text-align: center;">Her dedektifin karanlığa bakış açısı farklıdır.</p>
+            
+            <div class="char-card" id="char-logic" onclick="selectCharacter('logic')">
+                <h3>Mantıkçı</h3>
+                <p>Olgulara odaklanır. Yanlış delil seçiminde Puan kaybı %50 azalır.</p>
+            </div>
+            <div class="char-card" id="char-intuition" onclick="selectCharacter('intuition')">
+                <h3>Sezgici</h3>
+                <p>İnsanları okur. Başarılı sorgularda ekstra +10 Puan kazanır.</p>
+            </div>
+            <div class="char-card" id="char-empathy" onclick="selectCharacter('empathy')">
+                <h3>Empatik</h3>
+                <p>Motivasyonları anlar. Sorgularda gizli içgörü notları açılır.</p>
+            </div>
+            
+            <button class="btn" id="btn-confirm-char" onclick="confirmCharacter()" disabled style="margin-top: auto;">Onayla ve Başla</button>
+            <button class="btn btn-back" onclick="showScene('scene-menu')">← Geri</button>
+        </div>
+
+        <!-- 3. VAKA SEÇİM -->
+        <div id="scene-selection" class="scene">
+            <h2 class="title">Vaka Dosyaları</h2>
+            <div class="grid-list" id="case-grid"></div>
+            <button class="btn" style="margin-top: auto;" onclick="showScene('scene-menu')">Menü</button>
+        </div>
+
+        <!-- 4. AÇILIŞ + OLAY ÖZETİ -->
+        <div id="scene-opening" class="scene" style="justify-content: center; align-items: flex-start; padding-top: 30px;">
+            <h2 id="opening-case-title" style="color: var(--blood-ink); text-align: center; font-size: 1.4rem; margin-bottom: 20px; width: 100%;"></h2>
+            <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 4px; padding: 18px 20px; margin-bottom: 22px; width: 100%;">
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px; font-family: monospace;">📋 OLAY ÖZETİ</p>
+                <p id="opening-briefing" style="font-size: 0.97rem; line-height: 1.65; color: var(--ink-color);"></p>
+            </div>
+            <p id="opening-text" class="ink-bleed" style="font-size: 1.1rem; font-style: italic; line-height: 1.6; color: var(--blood-ink); text-align: center; margin-bottom: 30px;"></p>
+            <button class="btn" onclick="startInvestigation()" style="width: 230px; margin: 0 auto;">Soruşturmayı Başlat →</button>
+        </div>
+
+        <!-- 5. OYUN -->
+        <div id="scene-game" class="scene">
+            <!-- Sabit Başlık Çubuğu -->
+            <div id="fixed-header">
+                <span class="header-title" id="fixed-title">Vaka 1</span>
+                <span class="header-concept" id="fixed-concept">Kavram</span>
+                <span class="header-timer" id="fixed-timer">⏱️ 00:00</span>
+            </div>
+
+            <div class="hud">
+                <div class="hud-top">
+                    <span id="hud-score">Puan: 100</span>
+                    <span style="font-size: 0.9rem;">Gerilim Seviyesi</span>
+                </div>
+                <div class="tension-bar-container" style="margin-top: 5px;">
+                    <div class="tension-bar" id="tension-bar"></div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('olayYeri')">Olay Yeri</button>
+                <button class="tab-btn" onclick="switchTab('sorgu')">Sorgu</button>
+                <button class="tab-btn" onclick="switchTab('notDefteri')">Not Defteri</button>
+            </div>
+
+            <div id="tab-olayYeri" class="tab-content active">
+                <p style="margin-bottom: 5px; font-weight: bold;" id="game-location"></p>
+                <p style="font-size: 0.8rem; color: #555; font-style: italic; margin-bottom: 10px;">🔍 Delilleri toplamak için tıkla. Toplanan deliller açılır, toplanmayanlar soru işareti olarak kalır.</p>
+                <div class="clue-grid" id="game-clues"></div>
+            </div>
+
+            <div id="tab-sorgu" class="tab-content">
+                <div id="game-suspects"></div>
+            </div>
+
+            <div id="tab-notDefteri" class="tab-content">
+                <button class="btn btn-back" style="margin-bottom: 15px;" onclick="goBackFromNotebook()">← Geri</button>
+                <h3 style="text-align: left; margin-bottom: 10px;">Kanıtlar:</h3>
+                <div id="game-notebook" style="border: 1px solid var(--ink-color); padding: 15px; min-height: 200px; margin-bottom: 15px;"></div>
+                <button class="btn" id="btn-goto-analysis" onclick="showScene('scene-analysis')" disabled>3 Delili Seç ve Analiz Et</button>
+            </div>
+        </div>
+
+        <!-- 6. ANALİZ EKRANI (Delil Seçimi) -->
+        <div id="scene-analysis" class="scene">
+            <h2 class="title">Analiz</h2>
+            <p style="margin-bottom: 20px;">Topladığın kanıtlardan sadece 3 tanesi gerçeği gösteriyor.</p>
+            <div id="analysis-clues" class="grid-list" style="margin-bottom: 20px; flex-grow: 1;"></div>
+            <button class="btn" id="btn-confirm-analysis" onclick="startSequenceMiniGame()" disabled>Bu Üçünü Bağla</button>
+            <button class="btn" onclick="showScene('scene-game')">Geri</button>
+        </div>
+
+        <!-- 7. KRONOLOJİ (Sıralama Mini-Oyunu) -->
+        <div id="scene-sequence" class="scene">
+            <h2 class="title">Zaman Çizelgesi</h2>
+            <p style="margin-bottom: 20px;">Seçtiğin 3 kanıtın oluş sırasını belirle. (Önce 1'e, sonra 2'ye, sonra 3'e tıkla)</p>
+            
+            <div class="seq-slots" id="seq-slots">
+                <div class="seq-slot" id="slot-1">1</div>
+                <div class="seq-slot" id="slot-2">2</div>
+                <div class="seq-slot" id="slot-3">3</div>
+            </div>
+
+            <div id="seq-choices"></div>
+            
+            <button class="btn" id="btn-reset-seq" onclick="resetSequence()" style="margin-top: 20px;">Sıfırla</button>
+            <button class="btn" onclick="showScene('scene-analysis')">İptal</button>
+        </div>
+
+        <!-- 8. SONUÇ (Vaka Çözüm Analizi) -->
+        <div id="scene-result" class="scene">
+            <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); width: 100%; max-width: 500px; margin: 0 auto; color: var(--paper-color);">
+                <h2 class="title" style="margin-bottom: 15px; font-size: 1.8rem; color: var(--paper-color);">📋 VAKA ÇÖZÜM ANALİZİ</h2>
+                
+                <p style="margin-bottom: 10px;">🔍 <strong>Vaka:</strong> <span id="res-vaka"></span></p>
+                <p style="margin-bottom: 10px;">🧠 <strong>Psikoloji Kavramı:</strong> <span id="res-kavram"></span></p>
+                <p style="margin-bottom: 10px;">⏱️ <strong>Çözüm Süresi:</strong> <span id="res-sure"></span></p>
+                <p style="margin-bottom: 20px;">⭐ <strong>Puan:</strong> <span id="res-puan"></span></p>
+
+                <h3 style="color: var(--blood-ink); text-align: left; font-size: 1.2rem; margin-bottom: 10px;">📌 NASIL ÇÖZDÜN?</h3>
+                <ul style="text-align: left; margin-left: 20px; margin-bottom: 20px; font-size: 0.95rem;">
+                    <li style="margin-bottom: 5px;"><strong>Doğru deliller:</strong> <span id="res-dogru"></span></li>
+                    <li style="margin-bottom: 5px;"><strong>Çeldiriciler:</strong> <span id="res-celdirici"></span></li>
+                    <li style="margin-bottom: 5px;"><strong>Katil:</strong> <span id="res-katil"></span></li>
+                    <li style="margin-bottom: 5px;"><strong>Kanıt:</strong> <span id="res-kanit"></span></li>
+                </ul>
+
+                <h3 style="color: var(--blood-ink); text-align: left; font-size: 1.2rem; margin-bottom: 10px;">📖 FELSEFİ BAĞLANTI:</h3>
+                <p style="text-align: justify; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.4;" id="res-felsefe"></p>
+
+                <h3 style="color: var(--blood-ink); text-align: left; font-size: 1.2rem; margin-bottom: 10px;">💬 KİŞİSEL GELİŞİM METNİ:</h3>
+                <p style="text-align: justify; font-size: 0.95rem; font-style: italic; background: rgba(0,0,0,0.3); padding: 15px; border-left: 4px solid var(--blood-ink);" id="res-kisisel"></p>
+
+            </div>
+            <button class="btn" style="margin-top: 20px; background: var(--paper-color); color: var(--bg-color);" onclick="completeCase()">İlerle</button>
+        </div>
+
+        <!-- 9. BAŞARISIZ (Gerilim/Puan Bitti veya Hata) -->
+        <div id="scene-failed" class="scene" style="justify-content: center; text-align: center;">
+            <h2 class="title" style="color: var(--tension-color);">Zihin Bulandı</h2>
+            <p id="fail-reason" style="margin-bottom: 30px;">Gerilim seviyesi kritik noktayı aştı veya çok fazla hata yaptın.</p>
+            <button class="btn" onclick="startCase(gameState.activeCaseId)">Yeniden Dene</button>
+            <button class="btn" onclick="showScene('scene-selection')">Menü</button>
+        </div>
+
+        <!-- 10. META HİKAYE (Büyük Resim) -->
+        <div id="scene-meta" class="scene" style="justify-content: center; text-align: center;">
+            <h2 class="title">Büyük Resim</h2>
+            <p class="ink-bleed" style="font-style: italic; line-height: 1.6; margin-bottom: 30px;">
+                Tüm o vakalar, başka insanların suçları değilmiş. Hepsi senin zihninin aynalarıydı. 
+                Mantığı ararken hislerini, sezgiyi ararken gerçekleri sakladın. Çözdüğün katiller, aslında bastırdığın yönlerindi.
+            </p>
+            <button class="btn" onclick="showScene('scene-report')">Raporu Gör</button>
+        </div>
+
+        <!-- 11. RAPOR VE BAŞARIMLAR -->
+        <div id="scene-report" class="scene">
+            <h2 class="title">Kişisel Gelişim Raporu</h2>
+            <div class="report-section">
+                <h3>Dedektif Profili: <span id="rep-char"></span></h3>
+                <p>Toplam Skor: <span id="rep-score"></span></p>
+                <p>Bitirilen Vaka: 5/5</p>
+            </div>
+            <div class="report-section">
+                <h3>Kazanılan Başarımlar (<span id="rep-ach-count"></span>/20)</h3>
+                <ul id="rep-achievements" style="list-style-position: inside; font-size: 0.9rem;"></ul>
+            </div>
+            <div class="report-section">
+                <h3>Psikolojik Analiz</h3>
+                <p>Vakalar iç dünyanızın bir yansımasıydı. Çözdüğünüz her şifre, kendi egonuzdaki kilitleri kırmanızı sağladı.</p>
+            </div>
+            <button class="btn" onclick="window.print()">PDF Olarak Kaydet / Yazdır</button>
+            <button class="btn" onclick="showScene('scene-menu')">Ana Menü</button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- GEMINI API STUB ---
+        async function fetchDynamicCaseFromGemini(caseId) { return null; }
+
+        // --- VERİ (JSON) ---
+        const CASES = [
+            {
+                vakaID: 1,
+                baslik: "Kırık Ayna Cinayeti",
+                kavram: "Bilişsel Çarpıtma",
+                briefing: "Gece 22:30'da eski kitabevinin arka odasında bir ceset bulundu. Mağaza sahibi kapıyı kapalı bulduğunu, içeriden ses gelince zorladığını söylüyor. Silah bulunamadı; kurbanın kim tarafından öldürüldüğü henüz bilinmiyor.",
+                acilisMetni: "Bir ayna kırıldığında yansımalar dağılır. Hangisi gerçek?",
+                mekanlar: { olayYeri: "Eski kitabevi, arka oda" },
+                deliller: [
+                    { id: "D1", metin: "Kırık ayna parçası", dogruMu: true, aciklama: "Üzerinde kurşun izi var" },
+                    { id: "D2", metin: "Mektup", dogruMu: false, aciklama: "Başka müşteriye ait, olayla ilgisi yok" },
+                    { id: "D3", metin: "Ayakkabı izi (43 numara)", dogruMu: true, aciklama: "Kitapçı sahibinin ayakkabı numarasıyla eşleşiyor" },
+                    { id: "D4", metin: "Saat 21:00 fişi", dogruMu: false, aciklama: "Cinayet saatiyle uyuşmuyor" },
+                    { id: "D5", metin: "Tesbih tanesi", dogruMu: false, aciklama: "Alakasız düşmüş olabilir" },
+                    { id: "D6", metin: "Kanlı mendil", dogruMu: true, aciklama: "Kan grubu kitapçı sahibiyle eşleşiyor" }
+                ],
+                chronologicalOrder: ["D1", "D3", "D6"],
+                katil: "Şüpheli A (Kitapçı Sahibi)",
+                kanitAciklamasi: "Ayakkabı izi (43 numara) ve kanlı mendildeki kan grubu kitapçı sahibiyle birebir eşleşti. Kırık aynada kurşun izi olayın arka odada yaşandığını kanıtlıyor.",
+                felsefiBaglanti: "Bu vaka 'Bilişsel Çarpıtma' ile ilgiliydi. Şüpheli A, olayı çarpıtarak kendini masum göstermeye çalıştı. Ancak deliller onun gerçek yüzünü gösterdi. Tıpkı hayatta olduğu gibi: Bazen en çok inandığımız şeyler, aslında en büyük yanılgılarımızdır. Ayna kırıldığında yansımalar bozulur; gerçeği görmek için parçaları birleştirmek gerekir.",
+                kisiselGelisim: "Gerçek, bazen görmek istemediğimiz şeydir. Ancak onunla yüzleşmedikçe, kendi çarpıtmalarımızın tutsağı olmaya devam ederiz.",
+                sorguCevapAnahtari: {
+                    "Kitapçı Sahibi": [
+                        { soru: "Cinayet anında ne yapıyordunuz?", dogru: "Kitapları düzenliyordum", yanlis: "Dışarıda sigara içiyordum", icgoru: "Gözlerini kaçırıyor, yalan söylerken elleri titriyor.", yanlisIcgoru: "Aceleye geldin. Savunmacı tavrı seni yanılttı." },
+                        { soru: "Mağazanın arka kapısı o gece kilitli miydi?", dogru: "Hayır, o gece unutmuştum", yanlis: "Evet, her zaman kilitliyim", icgoru: "Kaçış yolunu gizlemeye çalışıyor — itirafla kendini ele verdi.", yanlisIcgoru: "Rutinini sorgulaman gerekiyordu, detayı kaçırdın." }
+                    ],
+                    "Müşteri": [
+                        { soru: "Silah sesi duydunuz mu?", dogru: "Evet, net duydum", yanlis: "Hayır, hiç duymadım", icgoru: "Şokta ama dürüst; örtbas etme çabası yok.", yanlisIcgoru: "Şokta olan birinin hafızasına fazla güvendin." },
+                        { soru: "Son gördüğünüz kişi kimdi?", dogru: "Kitapçı sahibiydi", yanlis: "Temizlikçiydi", icgoru: "Ayrıntıyı net hatırlıyor, güvenilir tanık.", yanlisIcgoru: "Korku hafızayı etkiler — bunu hesaba katmadın." }
+                    ],
+                    "Temizlikçi": [
+                        { soru: "Odaya en son ne zaman girdiniz?", dogru: "Sabah, rutinde", yanlis: "Az önce, düzenlemek için", icgoru: "Korkmuş ama dürüst; kendini koruma çabası var ama yalan yok.", yanlisIcgoru: "Korkuyu suçlulukla karıştırdın." },
+                        { soru: "Kanlı mendili daha önce gördünüz mü?", dogru: "Hayır, hiç görmedim", yanlis: "Evet, dün de oradaydı", icgoru: "Emin ve net. Temizlikçi masum.", yanlisIcgoru: "Detayı gözden kaçırdın, temizlikçinin bilgisini küçümsedın." }
+                    ]
+                }
+            },
+            {
+                vakaID: 2,
+                baslik: "Kayıp Maske",
+                kavram: "Gölge Benlik",
+                briefing: "Terk edilmiş tiyatro salonunda akşam provası sonrası baş oyuncu sersemlemiş halde bulundu; yanındaki değerli bronz heykel parçalanmıştı. Kulisin kapısı içeriden kilitliydi — dışarıdan giriş imkânsız görünüyor.",
+                acilisMetni: "Gündüz taktığın maske düştüğünde, karanlıkta kim kalır?",
+                mekanlar: { olayYeri: "Terk edilmiş tiyatro salonu" },
+                deliller: [
+                    { id: "D1", metin: "Yırtık bilet", dogruMu: false, aciklama: "Dünkü oyuna ait, alakasız" },
+                    { id: "D2", metin: "Siyah eldiven", dogruMu: true, aciklama: "Barut izi taşıyor" },
+                    { id: "D3", metin: "Eski senaryo", dogruMu: false, aciklama: "Tamamen alakasız" },
+                    { id: "D4", metin: "Kuliste ayak izi", dogruMu: true, aciklama: "Sadece içeriden kilitli odaya gidiyor" },
+                    { id: "D5", metin: "Kırık heykel", dogruMu: true, aciklama: "Kavga izleri ve kan var" },
+                    { id: "D6", metin: "Gözlük", dogruMu: false, aciklama: "Seyirci koltuğunda unutulmuş" }
+                ],
+                chronologicalOrder: ["D2", "D5", "D4"],
+                katil: "Şüpheli B (Yönetmen)",
+                kanitAciklamasi: "Sadece yönetmenin anahtarı vardı ve içeriden kilitliydi. Barutlu eldiven karanlıktaki kavgayı ele verdi.",
+                felsefiBaglanti: "Bu vaka 'Gölge Benlik' ile ilgiliydi. Yönetmen karanlığı kasten yaratarak içindeki bastırılmış öfkeyi açığa çıkardı. Kulisi kilitlediğinde aslında herkesten değil, kendinden saklanıyordu.",
+                kisiselGelisim: "Kendi gölgenden kaçamazsın. Onu inkar ettikçe büyür ve bir gün ışıkları kapattığında tek gerçeğin haline gelir.",
+                sorguCevapAnahtari: {
+                    "Başrol Oyuncusu": [
+                        { soru: "Neden sahneden erken indin?", dogru: "Işıklar aniden kesilmişti", yanlis: "Rolümü unuttum, panikledim", icgoru: "Spot ışıkları olmadan eksik hissediyor; ego kırılgan.", yanlisIcgoru: "Onun egosu yüzünden asıl nedeni kaçırdın." },
+                        { soru: "Yönetmen ile son provada anlaşmazlık yaşadınız mı?", dogru: "Evet, sahneleme üzerinde tartıştık", yanlis: "Hayır, her şey yolundaydı", icgoru: "Çatışmayı kabul ediyor — örtbas etmiyor.", yanlisIcgoru: "Performans yapan birinin sözüne kanmak tehlikeli." }
+                    ],
+                    "Yönetmen": [
+                        { soru: "Kulisin anahtarı kimdeydi?", dogru: "Sadece bendeydi", yanlis: "Herkes girebilir, açık bıraktım", icgoru: "Kontrolü kaybetmekten deli gibi korkuyor.", yanlisIcgoru: "Kendi yarattığı yalanlarına seni de inandırdı." },
+                        { soru: "Heykel neden kırık?", dogru: "Bilmiyorum, onu kıran ben değilim", yanlis: "Sahnede kazara devrildi", icgoru: "Panikte. Heykeli açıklamaktan kaçınıyor — suçluluk işareti.", yanlisIcgoru: "Soğukkanlı cevabı sizi yanılttı." }
+                    ],
+                    "Işıkçı": [
+                        { soru: "Elektrik kesintisi tesadüf müydü?", dogru: "Şalter bilerek indirilmişti", yanlis: "Sigorta atmıştır, normaldir", icgoru: "Birini koruyor gibi sessiz.", yanlisIcgoru: "Mesleki bilgiyi saklamasına izin verdin." },
+                        { soru: "O gece sizden başka kulise giren oldu mu?", dogru: "Sadece yönetmen girdi, gördüm", yanlis: "Kimseyi görmedim", icgoru: "İstemeden yönetmeni işaret etti — gerçeği saklayamıyor.", yanlisIcgoru: "Sessizliği masumiyet sandın." }
+                    ]
+                }
+            },
+            {
+                vakaID: 3,
+                baslik: "Saat Kulesi",
+                kavram: "Varoluşsal Boşluk",
+                briefing: "Şehrin eski saat kulesinde bakım yapan teknisyen yüksekten düşerek hayatını kaybetti. Kopan halatın yaşından çok daha fazla yıprandığı dikkat çekti — sanki bilerek zayıflatılmış. Kaza mı, cinayet mi?",
+                acilisMetni: "Zaman aktıkça geriye ne kalır? Tik tak... Sadece bir boşluk mu?",
+                mekanlar: { olayYeri: "Şehrin merkezindeki eski saat kulesi" },
+                deliller: [
+                    { id: "D1", metin: "Duran cep saati", dogruMu: true, aciklama: "Kurbanın düştüğü anı gösteriyor" },
+                    { id: "D2", metin: "Yağmurluk", dogruMu: false, aciklama: "Dün yağmur yağmadı" },
+                    { id: "D3", metin: "Kopuk halat", dogruMu: true, aciklama: "Kesici aletle yıpratılmış" },
+                    { id: "D4", metin: "Gazete küpürü", dogruMu: false, aciklama: "Eski bir intihar haberi, yönlendirici" },
+                    { id: "D5", metin: "Zehir şişesi", dogruMu: false, aciklama: "Sadece uyku ilacı" },
+                    { id: "D6", metin: "Çizilmiş dişli", dogruMu: true, aciklama: "Mekanizmaya sıkışan ceket parçası" }
+                ],
+                chronologicalOrder: ["D3", "D6", "D1"],
+                katil: "Şüpheli A (Saatçi Ustası)",
+                kanitAciklamasi: "Mekanizmaya gizlice müdahale edebilen tek kişi oydu; halatı kasten zayıflattı.",
+                felsefiBaglanti: "Bu vaka 'Varoluşsal Boşluk' ile ilgiliydi. Saatçi ustası yıllarını verdiği mekanizmanın anlamsızlığını fark edince kasten halatı zayıflattı.",
+                kisiselGelisim: "Zamanı durduramazsın, sadece onun içinde nasıl var olacağını seçebilirsin. Anlamı dışarıda değil, eylemlerinde ara.",
+                sorguCevapAnahtari: {
+                    "Saatçi Ustası": [
+                        { soru: "Halat neden koptu?", dogru: "Biri kasten zayıflatmış olmalı", yanlis: "Çok eskiydi, doğal yıpranma", icgoru: "Elleri çalışmaktan nasır tutmuş ama ruhu bomboş.", yanlisIcgoru: "Ustalığına kandın, niyetini göremedin." },
+                        { soru: "Son 48 saatte kuleye çıktınız mı?", dogru: "Evet, sabah erken bakım yaptım", yanlis: "Hayır, haftadır gitmedim", icgoru: "Yalan — dişli izleri ve yağ lekesi sabah orada olduğunu kanıtlıyor.", yanlisIcgoru: "Masum yaşlı usta imajına kapıldın." }
+                    ],
+                    "Gece Bekçisi": [
+                        { soru: "Kulede başka kimse var mıydı?", dogru: "Yukarıya çıkan ayak sesleri duydum", yanlis: "Hayır, rüzgar sesiydi muhtemelen", icgoru: "Yalnızlıktan bunalmış ama sesleri gerçekten duymuş.", yanlisIcgoru: "Bekçinin yalnızlık hezeyanları seni yanılttı." },
+                        { soru: "Cep saatini kim buldu?", dogru: "Ben buldum, tam kırık haldeydi", yanlis: "İtfaiyeciler buldu, ben görmedim", icgoru: "Detayı net biliyor; önemli bir tanık.", yanlisIcgoru: "Bekçinin rutin cevabına fazla güvendin." }
+                    ],
+                    "Mimar": [
+                        { soru: "Dişlilere dışarıdan erişilebilir mi?", dogru: "Hayır, gizli panel var", yanlis: "Evet, camdan erişilebilir", icgoru: "Yaptığı kuleyle gurur duyuyor — ve farkında olmadan katili işaret etti.", yanlisIcgoru: "Kibirli tavrı yüzünden teknik detayı atladın." },
+                        { soru: "Gizli panelin anahtarı kimde?", dogru: "Sadece saatçi ustasında ve bende", yanlis: "Herhangi bir teknisyende olabilir", icgoru: "Farkında değil ama şüpheli sayısını ikiye indirdi.", yanlisIcgoru: "Mimarın teknik kibrine takıldın, asıl cevabı kaçırdın." }
+                    ]
+                }
+            },
+            {
+                vakaID: 4,
+                baslik: "Kilitli Kasa",
+                kavram: "Savunma Mekanizmaları",
+                briefing: "Malikânedeki şifreli kasadan gece yarısı milyonluk bir koleksiyon çalındı. Güvenlik kameraları silinmiş, alarm sistemi çalışmıyordu. Hırsızlık dışarıdan değil, içeriden yapılmış izlenimi veriyor.",
+                acilisMetni: "En güçlü kilitler, en derin korkuları saklar.",
+                mekanlar: { olayYeri: "Zengin bir iş adamının malikanesi" },
+                deliller: [
+                    { id: "D1", metin: "Sahte anahtar", dogruMu: false, aciklama: "Kasaya hiç uymuyor" },
+                    { id: "D2", metin: "Termal sensör logu", dogruMu: true, aciklama: "Kasa gece 03:00'te açılmış" },
+                    { id: "D3", metin: "Parmak izi", dogruMu: false, aciklama: "Ev sahibine ait, şüphe uyandırmaz" },
+                    { id: "D4", metin: "Silinmiş kamera kaydı", dogruMu: true, aciklama: "Yalnızca içeriden silinebilir" },
+                    { id: "D5", metin: "Açık pencere", dogruMu: false, aciklama: "İçeriden kırılmış — sahte giriş göstergesi" },
+                    { id: "D6", metin: "Sigara izmariti", dogruMu: true, aciklama: "Güvenlik şefinin özel markası" }
+                ],
+                chronologicalOrder: ["D2", "D4", "D6"],
+                katil: "Şüpheli A (Güvenlik Şefi)",
+                kanitAciklamasi: "Sistemi kapatıp içeriden camı kıran şef, ardında özel sigara izmaritini bıraktı.",
+                felsefiBaglanti: "Bu vaka 'Savunma Mekanizmaları' ile ilgiliydi. İçeriden kırılan cam, dışarıdan gelmeyen bir tehdidi varmış gibi gösterme çabasıydı.",
+                kisiselGelisim: "Kendini korumak için inşa ettiğin duvarlar, gün gelir seni dışarıdan değil, içerideki korkularından hapseder.",
+                sorguCevapAnahtari: {
+                    "Güvenlik Şefi": [
+                        { soru: "Kamera neden kapalıydı?", dogru: "Sistem güncellemesi yapıyordum", yanlis: "Kablolar kesilmişti, bilmiyordum", icgoru: "Aşırı özgüven — yakalanmayacağını düşünüyor.", yanlisIcgoru: "Manipülatif cevapları senin mantığını kör etti." },
+                        { soru: "O gece devriye attınız mı?", dogru: "Evet, attım — her şey normaldi", yanlis: "Hasta olduğum için gecikmiştim", icgoru: "İyi organize edilmiş bir yalan. Ama sigara izmariti her yerde.", yanlisIcgoru: "Sistemli yalancıyı fark etmedin." }
+                    ],
+                    "Hizmetli": [
+                        { soru: "Pencere ne zaman kırıldı?", dogru: "Polis gelmeden hemen önce, sesini duydum", yanlis: "Gece hırsız girdiğinde kırılmış olmalı", icgoru: "Gerçeği biliyor ama korkudan susuyor.", yanlisIcgoru: "Korku içindeki birini doğru okuyamadın." },
+                        { soru: "Güvenlik şefi sigara içer mi?", dogru: "Evet, hep aynı markayı içer", yanlis: "Hayır, sigara içtiğini hiç görmedim", icgoru: "Farkında olmadan şefi işaret etti — kritik bilgi.", yanlisIcgoru: "Önemsiz detay gibi görünen şeyi atladın." }
+                    ],
+                    "Ev Sahibi": [
+                        { soru: "Kasa şifresini kim biliyordu?", dogru: "Ben ve güvenlik şefi", yanlis: "Kimse, sadece ben biliyorum", icgoru: "Paranoyası kırıldı — şimdi şüphe duymaya başlıyor.", yanlisIcgoru: "Paranoyası seni de yanlış şüpheye düşürdü." },
+                        { soru: "Güvenlik şefine güveniyor muydunuz?", dogru: "Güveniyordum, ama şimdi emin değilim", yanlis: "Tamamen güveniyorum, imkânsız", icgoru: "Sezgisi çalışıyor; bilinçaltı bir şeyler hissediyor.", yanlisIcgoru: "Ev sahibinin savunmasını gerçek sandın." }
+                    ]
+                }
+            },
+            {
+                vakaID: 5,
+                baslik: "İkiz Yolculuk",
+                kavram: "İçsel Çatışma",
+                briefing: "Issız bir otoyolda araç bariyerlere çarparak takla attı; sürücü ağır yaralı, yolcudan iz yok. Olay yerinde iki farklı ses barındıran bir kayıt cihazı bulundu. Sürücü kaza yapmadı — o anın içinden geçemedi.",
+                acilisMetni: "İki yol ayrımında duruyorsun. Hangisi sensin?",
+                mekanlar: { olayYeri: "Issız otoyolda kaza yapmış araç" },
+                deliller: [
+                    { id: "D1", metin: "Fren izleri", dogruMu: true, aciklama: "Fren yapılmamış, bilerek gaza basılmış" },
+                    { id: "D2", metin: "Alkol şişesi", dogruMu: false, aciklama: "Aylardır araçta, güncel değil" },
+                    { id: "D3", metin: "Yırtık bilet", dogruMu: false, aciklama: "Alakasız" },
+                    { id: "D4", metin: "Direksiyondaki izler", dogruMu: true, aciklama: "Direksiyon üzerinde boğuşma izleri" },
+                    { id: "D5", metin: "Harita", dogruMu: false, aciklama: "Yanlış yön, çeldirici" },
+                    { id: "D6", metin: "Ses kaydı", dogruMu: true, aciklama: "Tek kişiden iki farklı ses profili" }
+                ],
+                chronologicalOrder: ["D6", "D4", "D1"],
+                katil: "Sürücü ve Yolcu (Aynı Kişi)",
+                kanitAciklamasi: "Ses kaydı tek kişiden iki farklı ses profili gösterdi. Boğuşma izleri ve fren yapmadan hızlanma zihinsel çöküşü işaret ediyor.",
+                felsefiBaglanti: "Bu vaka 'İçsel Çatışma' ile ilgiliydi. Dışarıdan iki kişi gibi görünen mücadele, aslında zihnin kendi içindeki çöküşüydü.",
+                kisiselGelisim: "Kendinle savaşırsan her iki taraf da kaybeder. Çatışmayı bitirmenin tek yolu, zıtlıklarını kabul edip direksiyonu tek bir ele almaktır.",
+                sorguCevapAnahtari: {
+                    "Yolcu": [
+                        { soru: "Neden tartışıyordunuz?", dogru: "Sürücü direksiyonu kırmaya çalışıyordu", yanlis: "Sohbet ediyorduk, tartışma yoktu", icgoru: "Suçu sürekli başkasına atma eğiliminde.", yanlisIcgoru: "Kendi iç sesini başkası sandın." },
+                        { soru: "Araçta kaçtınız?", dogru: "Sadece ikimiz vardık", yanlis: "Üçüncü biri de vardı arka koltukta", icgoru: "'İkimiz' derken kendini de sayıyor — ayrışma belirtisi.", yanlisIcgoru: "Yolcunun kendi çelişkisini fark etmedin." }
+                    ],
+                    "Görgü Tanığı": [
+                        { soru: "Araç yoldan nasıl çıktı?", dogru: "Birden hızlandı, fren sesi yoktu", yanlis: "Lastik patladı, kontrol kaybetti", icgoru: "Sıradan biri ama gözlemci — kaosu anlamlandırmaya çalışıyor.", yanlisIcgoru: "Dışarıdan bakan birinin yanılgısına ortak oldun." },
+                        { soru: "Araçta kaç kişi gördünüz?", dogru: "Tek kişi vardı, yalnız sürüyordu", yanlis: "İki kişi vardı, bağırıyorlardı", icgoru: "Kritik gözlem: Araçta yalnızca bir kişi vardı.", yanlisIcgoru: "Tanığın gördüklerini kendi senaryona uydurdun." }
+                    ],
+                    "Polis": [
+                        { soru: "Alkol şişesi kime aitti?", dogru: "Eski şişeydi, sürücü sarhoş değil", yanlis: "Sürücü büyük ihtimalle sarhoştu", icgoru: "Sadece prosedüre odaklı, derinliği görmüyor.", yanlisIcgoru: "Kolay olan cevaba (alkol) kaçtın." },
+                        { soru: "Fren izi var mıydı?", dogru: "Hayır, hiç fren yapmamış", yanlis: "Evet, uzun fren izi var", icgoru: "Kasıtlı hızlanma — kaza değil, bilinçli eylem.", yanlisIcgoru: "Teknik detayı yanlış yorumladın." }
+                    ]
+                }
+            }
+        ];
+
+        const ALL_ACHIEVEMENTS = [
+            { id: "a1", name: "İlk Adım", desc: "İlk vakayı başarıyla çözdün." },
+            { id: "a2", name: "Dedektif", desc: "Tüm vakaları bitirdin." },
+            { id: "a3", name: "Kusursuz", desc: "Bir vakayı sıfır hatayla tamamladın." },
+            { id: "a4", name: "Hızlı", desc: "Bir vakayı 1 dakikanın altında bitirdin." },
+            { id: "a6", name: "Gerilim Hattı", desc: "Gerilim %75'in üzerindeyken vaka çözdün." },
+            { id: "a8", name: "Mantık Uzmanı", desc: "Mantıkçı karakteriyle oyunu bitirdin." }
+        ];
+
+        // --- STATE YÖNETİMİ ---
+        let gameState = {
+            characterClass: null,
+            unlockedCases: [1],
+            activeCaseId: null,
+            score: 100,
+            tension: 0,
+            timer: 0,
+            interval: null,
+            collectedClues: [],
+            interrogations: {},
+            analysisClues: [],
+            sequenceOrder: [],
+            achievements: [],
+            mistakesInCase: 0,
+            solvedCount: 0
+        };
+
+        const STORAGE_KEY = 'icDedektif_Premium';
+        let previousTabId = 'olayYeri'; 
+        let insightTimeout = null;
+
+        function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState)); }
+        function loadState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if(saved) {
+                try { gameState = JSON.parse(saved); return true; } catch(e){}
+            }
+            return false;
+        }
+        function clearAllData() { 
+            localStorage.removeItem(STORAGE_KEY); 
+            gameState = {
+                characterClass: null,
+                unlockedCases: [1],
+                activeCaseId: null,
+                score: 100,
+                tension: 0,
+                timer: 0,
+                interval: null,
+                collectedClues: [],
+                interrogations: {},
+                analysisClues: [],
+                sequenceOrder: [],
+                achievements: [],
+                mistakesInCase: 0,
+                solvedCount: 0
+            };
+            showInsightToast("Tüm kayıtlar silindi!", true);
+            setTimeout(() => { location.reload(); }, 2000);
+        }
+
+        // --- AUDIO ENGINE ---
+        let audioCtx = null;
+        function getAudioCtx() {
+            if (!audioCtx) {
+                try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+            }
+            return audioCtx;
+        }
+        function playTone(freq, type, dur, vol=0.1) {
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            if(ctx.state==='suspended') ctx.resume();
+            try {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type; osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(vol, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+                osc.connect(gain); gain.connect(ctx.destination);
+                osc.start(); osc.stop(ctx.currentTime + dur);
+            } catch(e) {}
+        }
+        function playDing() { playTone(880, 'sine', 0.5, 0.2); }
+        function playBuzz() { playTone(150, 'sawtooth', 0.5, 0.3); }
+
+        // --- CORE UI & LOGIC ---
+        function showScene(id) {
+            document.querySelectorAll('.scene').forEach(s => {
+                s.classList.remove('active');
+                s.style.display = '';
+            });
+            const s = document.getElementById(id);
+            s.style.display = 'flex'; void s.offsetWidth; s.classList.add('active');
+        }
+
+        // --- TUTORIAL / NASIL OYNANIR LOGIC ---
+        function showTutorial() {
+            document.getElementById('manual-overlay').classList.add('active');
+        }
+        function closeManual() {
+            document.getElementById('manual-overlay').classList.remove('active');
+        }
+
+        function unlockAchievement(aid) {
+            if(gameState.achievements.includes(aid)) return;
+            gameState.achievements.push(aid);
+            saveState();
+            const a = ALL_ACHIEVEMENTS.find(x => x.id === aid);
+            if(a) {
+                document.getElementById('toast-title').innerText = a.name;
+                document.getElementById('toast-desc').innerText = a.desc;
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                playTone(600, 'triangle', 1, 0.2);
+                setTimeout(()=> toast.classList.remove('show'), 4000);
+            }
+        }
+
+        function startGame() {
+            if(loadState() && gameState.characterClass) {
+                renderCaseSelection();
+                showScene('scene-selection');
+            } else {
+                showScene('scene-character');
+            }
+        }
+
+        function selectCharacter(type) {
+            document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('char-'+type).classList.add('selected');
+            gameState.characterClass = type;
+            document.getElementById('btn-confirm-char').disabled = false;
+        }
+
+        function confirmCharacter() {
+            saveState();
+            renderCaseSelection();
+            showScene('scene-selection');
+        }
+
+        function renderCaseSelection() {
+            const cont = document.getElementById('case-grid');
+            cont.innerHTML = '';
+            CASES.forEach(c => {
+                const unlocked = gameState.unlockedCases.includes(c.vakaID);
+                const d = document.createElement('div');
+                d.className = `case-card ${unlocked?'':'locked'}`;
+                let endTxt = (gameState.solvedCount >= c.vakaID) ? ` <br><small style="color:var(--blood-ink);">(Çözüldü)</small>` : '';
+                d.innerHTML = `<h3>Vaka ${c.vakaID}: ${c.baslik}</h3><p>${c.kavram}${endTxt}</p>`;
+                if(unlocked) d.onclick = () => loadCase(c.vakaID);
+                cont.appendChild(d);
+            });
+            if(gameState.solvedCount >= 5) {
+                const b = document.createElement('button');
+                b.className = 'btn'; b.innerText = 'Büyük Resmi Gör';
+                b.onclick = () => showScene('scene-meta');
+                cont.appendChild(b);
+            }
+        }
+
+        function startCase(id) { loadCase(id); }
+
+        function loadCase(id) {
+            gameState.activeCaseId = id;
+            gameState.tension = 0;
+            gameState.timer = 0;
+            gameState.collectedClues = [];
+            gameState.interrogations = {};
+            gameState.analysisClues = [];
+            gameState.mistakesInCase = 0;
+            saveState();
+            
+            const cData = CASES.find(c => c.vakaID === id);
+            document.getElementById('opening-case-title').innerText = `Vaka ${cData.vakaID}: ${cData.baslik}`;
+            document.getElementById('opening-briefing').innerText = cData.briefing;
+            document.getElementById('opening-text').innerText = cData.acilisMetni;
+            showScene('scene-opening');
+        }
+
+        function startInvestigation() {
+            const cData = CASES.find(c => c.vakaID === gameState.activeCaseId);
+            initGameUI(cData);
+            showScene('scene-game');
+            clearInterval(gameState.interval);
+            gameState.interval = setInterval(updateTick, 1000);
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds/60).toString().padStart(2,'0');
+            const s = (seconds%60).toString().padStart(2,'0');
+            return `${m}:${s}`;
+        }
+
+        function updateTick() {
+            gameState.timer++;
+            document.getElementById('fixed-timer').innerText = `⏱️ ${formatTime(gameState.timer)}`;
+        }
+
+        function modifyStats(tensionAdd, scoreAdd) {
+            if(gameState.characterClass === 'logic' && scoreAdd < 0) scoreAdd = Math.floor(scoreAdd / 2);
+            if(gameState.characterClass === 'intuition' && scoreAdd > 0) scoreAdd += 5;
+
+            gameState.tension += tensionAdd;
+            gameState.score += scoreAdd;
+            if(gameState.tension < 0) gameState.tension = 0;
+            
+            document.getElementById('tension-bar').style.width = `${gameState.tension}%`;
+            document.getElementById('hud-score').innerText = `Puan: ${gameState.score}`;
+
+            if(gameState.tension >= 100 || gameState.score < 0) {
+                clearInterval(gameState.interval);
+                playBuzz();
+                document.getElementById('fail-reason').innerText = gameState.tension >= 100 ? "Gerilim seviyesi %100 oldu ve akıl sağlığını yitirdin." : "Puanın 0'ın altına düştü. Dedektiflik rozetini kaybettin.";
+                showScene('scene-failed');
+            }
+        }
+
+        function switchTab(t) {
+            if (t !== 'notDefteri') { previousTabId = t; }
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            const btn = document.querySelector(`.tab-btn[onclick="switchTab('${t}')"]`);
+            if(btn) btn.classList.add('active');
+            document.getElementById(`tab-${t}`).classList.add('active');
+        }
+
+        function goBackFromNotebook() { switchTab(previousTabId); }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('scene-game').classList.contains('active')) {
+                if(document.getElementById('tab-notDefteri').classList.contains('active')) { goBackFromNotebook(); }
+            }
+        });
+
+        function showInsightToast(text, isCorrect) {
+            if(insightTimeout) clearTimeout(insightTimeout);
+            const t = document.getElementById('insight-toast');
+            if(text === "Tüm kayıtlar silindi!") {
+                t.innerHTML = `✅ Tüm kayıtlar silindi!`;
+            } else if(isCorrect) {
+                t.innerHTML = `✅ <strong>Doğru!</strong> İçgörü: ${text}`;
+            } else {
+                t.innerHTML = `❌ <strong>Yanlış!</strong> İçgörü: ${text}`;
+            }
+            t.style.opacity = 1;
+            insightTimeout = setTimeout(() => { t.style.opacity = 0; }, 4000);
+        }
+
+        function initGameUI(cData) {
+            modifyStats(0, 0); 
+            
+            document.getElementById('fixed-title').innerText = `Vaka ${cData.vakaID}: ${cData.baslik}`;
+            document.getElementById('fixed-concept').innerText = cData.kavram;
+            document.getElementById('fixed-timer').innerText = `⏱️ 00:00`;
+            document.getElementById('game-location').innerText = `Olay Yeri: ${cData.mekanlar.olayYeri}`;
+            
+            const cCont = document.getElementById('game-clues');
+            cCont.innerHTML = '';
+            cData.deliller.forEach(d => {
+                const box = document.createElement('div');
+                box.className = 'clue-box'; box.innerText = '?';
+                let isOpen = false;
+                box.onclick = () => {
+                    if (!isOpen) {
+                        // Delili aç
+                        isOpen = true;
+                        box.innerText = d.metin;
+                        box.classList.add('found');
+                        if (!gameState.collectedClues.includes(d.id)) {
+                            gameState.collectedClues.push(d.id);
+                        }
+                        playDing();
+                        updateNotebook(cData);
+                    } else {
+                        // Delili kapat
+                        isOpen = false;
+                        box.innerText = '?';
+                        box.classList.remove('found');
+                        const idx = gameState.collectedClues.indexOf(d.id);
+                        if (idx > -1) gameState.collectedClues.splice(idx, 1);
+                        updateNotebook(cData);
+                    }
+                };
+                cCont.appendChild(box);
+            });
+
+            const sCont = document.getElementById('game-suspects');
+            sCont.innerHTML = '';
+            Object.keys(cData.sorguCevapAnahtari).forEach(s => {
+                const questions = cData.sorguCevapAnahtari[s]; // 2-elemanlı dizi
+                const box = document.createElement('div');
+                box.className = 'suspect-box';
+                box.innerHTML = `<h3>${s}</h3>`;
+
+                questions.forEach((qd, qi) => {
+                    const isCorrectFirst = Math.random() > 0.5;
+                    const a1 = isCorrectFirst ? qd.dogru : qd.yanlis;
+                    const a2 = isCorrectFirst ? qd.yanlis : qd.dogru;
+
+                    const qDiv = document.createElement('div');
+                    qDiv.style.cssText = qi > 0 ? 'margin-top:12px; padding-top:12px; border-top:1px dotted var(--border-color);' : '';
+                    qDiv.innerHTML = `<p style="margin-bottom:8px; font-size:0.9rem; color:#666;">Soru ${qi + 1}:</p>
+                        <p style="margin-bottom:10px;">${qd.soru}</p>
+                        <button class="answer-btn">${a1}</button>
+                        <button class="answer-btn">${a2}</button>`;
+
+                    const btns = qDiv.querySelectorAll('.answer-btn');
+                    btns[0].onclick = () => handleAnswer(qd, isCorrectFirst, btns[0], qDiv);
+                    btns[1].onclick = () => handleAnswer(qd, !isCorrectFirst, btns[1], qDiv);
+
+                    box.appendChild(qDiv);
+                });
+
+                sCont.appendChild(box);
+            });
+            updateNotebook(cData);
+            switchTab('olayYeri'); 
+        }
+
+        function handleAnswer(qd, isCorrect, btn, box) {
+            box.querySelectorAll('.answer-btn').forEach(b => b.disabled = true);
+            if(isCorrect) {
+                btn.classList.add('correct'); playDing();
+                modifyStats(0, 10);
+                showInsightToast(qd.icgoru, true);
+            } else {
+                btn.classList.add('wrong'); playBuzz();
+                gameState.mistakesInCase++;
+                modifyStats(25, -10);
+                showInsightToast(qd.yanlisIcgoru, false);
+            }
+        }
+
+        function updateNotebook(cData) {
+            const nb = document.getElementById('game-notebook');
+            nb.innerHTML = gameState.collectedClues.map(cid => {
+                const d = cData.deliller.find(x=>x.id===cid);
+                return `• ${d.metin} <br>`;
+            }).join('');
+            
+            document.getElementById('btn-goto-analysis').disabled = gameState.collectedClues.length < 3;
+
+            const aCont = document.getElementById('analysis-clues');
+            aCont.innerHTML = '';
+            gameState.analysisClues = [];
+            // Analiz ekranında 6 delilin TÜMÜ listelenir
+            cData.deliller.forEach(d => {
+                const b = document.createElement('button');
+                b.className = 'btn'; b.innerText = d.metin;
+                b.onclick = () => {
+                    const idx = gameState.analysisClues.indexOf(d.id);
+                    if(idx>-1) { gameState.analysisClues.splice(idx,1); b.style.borderColor = 'var(--ink-color)'; b.style.opacity = '1'; }
+                    else if(gameState.analysisClues.length<3) { gameState.analysisClues.push(d.id); b.style.borderColor = 'var(--blood-ink)'; b.style.opacity = '1'; }
+                    else { b.style.opacity = '0.5'; setTimeout(()=>{ b.style.opacity='1'; }, 300); }
+                    document.getElementById('btn-confirm-analysis').disabled = gameState.analysisClues.length !== 3;
+                };
+                aCont.appendChild(b);
+            });
+        }
+
+        function startSequenceMiniGame() {
+            const cData = CASES.find(c => c.vakaID === gameState.activeCaseId);
+            const corrects = cData.chronologicalOrder; 
+            
+            let match = 0;
+            gameState.analysisClues.forEach(cid => { if(corrects.includes(cid)) match++; });
+            
+            if(match !== 3) {
+                playBuzz();
+                gameState.mistakesInCase++;
+                modifyStats(25, -15);
+                if(gameState.tension < 100 && gameState.score >= 0) {
+                    alert("Bu delil katili göstermiyor, tekrar dene! Gerilim arttı.");
+                    showScene('scene-game');
+                }
+                return;
+            }
+
+            gameState.sequenceOrder = [];
+            const chCont = document.getElementById('seq-choices');
+            chCont.innerHTML = '';
+            document.querySelectorAll('.seq-slot').forEach(s => s.innerText = s.id.replace('slot-',''));
+
+            gameState.analysisClues.forEach(cid => {
+                const d = cData.deliller.find(x=>x.id===cid);
+                const div = document.createElement('div');
+                div.className = 'seq-item'; div.innerText = d.metin;
+                div.onclick = () => {
+                    if(!gameState.sequenceOrder.includes(d.id) && gameState.sequenceOrder.length < 3) {
+                        gameState.sequenceOrder.push(d.id);
+                        div.classList.add('selected');
+                        document.getElementById('slot-'+gameState.sequenceOrder.length).innerText = d.metin;
+                        if(gameState.sequenceOrder.length === 3) checkSequence();
+                    }
+                };
+                chCont.appendChild(div);
+            });
+            showScene('scene-sequence');
+        }
+
+        function resetSequence() {
+            gameState.sequenceOrder = [];
+            document.querySelectorAll('.seq-item').forEach(d => d.classList.remove('selected'));
+            document.querySelectorAll('.seq-slot').forEach(s => s.innerText = s.id.replace('slot-',''));
+        }
+
+        function checkSequence() {
+            const cData = CASES.find(c => c.vakaID === gameState.activeCaseId);
+            const target = cData.chronologicalOrder;
+            
+            let isCorrect = true;
+            for(let i=0; i<3; i++) {
+                if(gameState.sequenceOrder[i] !== target[i]) isCorrect = false;
+            }
+
+            if(isCorrect) {
+                clearInterval(gameState.interval);
+                playDing();
+                modifyStats(0, 50);
+                
+                if(gameState.solvedCount < cData.vakaID) gameState.solvedCount = cData.vakaID;
+                if(!gameState.unlockedCases.includes(cData.vakaID+1) && cData.vakaID < 5) {
+                    gameState.unlockedCases.push(cData.vakaID+1);
+                }
+                saveState();
+
+                if(cData.vakaID === 1) unlockAchievement('a1');
+                if(gameState.solvedCount === 5) unlockAchievement('a2');
+                if(gameState.mistakesInCase === 0) unlockAchievement('a3');
+                if(gameState.timer < 60) unlockAchievement('a4');
+                if(gameState.tension >= 75) unlockAchievement('a6');
+                if(gameState.characterClass === 'logic' && cData.vakaID === 5) unlockAchievement('a8');
+
+                // Populate Result Screen
+                document.getElementById('res-vaka').innerText = cData.baslik;
+                document.getElementById('res-kavram').innerText = cData.kavram;
+                const m = Math.floor(gameState.timer/60).toString().padStart(2,'0');
+                const s = (gameState.timer%60).toString().padStart(2,'0');
+                document.getElementById('res-sure').innerText = `${m} dakika ${s} saniye`;
+                document.getElementById('res-puan').innerText = gameState.score;
+
+                const correctTexts = cData.deliller.filter(d => cData.chronologicalOrder.includes(d.id)).map(d => d.metin).join(', ');
+                const wrongTexts = cData.deliller.filter(d => !cData.chronologicalOrder.includes(d.id)).map(d => d.metin).join(', ');
+                document.getElementById('res-dogru').innerText = correctTexts;
+                document.getElementById('res-celdirici').innerText = wrongTexts;
+                
+                document.getElementById('res-katil').innerText = cData.katil;
+                document.getElementById('res-kanit').innerText = cData.kanitAciklamasi;
+                document.getElementById('res-felsefe').innerText = cData.felsefiBaglanti;
+                document.getElementById('res-kisisel').innerText = `"${cData.kisiselGelisim}"`;
+                
+                showScene('scene-result');
+            } else {
+                playBuzz();
+                gameState.mistakesInCase++;
+                modifyStats(25, -15);
+                if(gameState.tension < 100 && gameState.score >= 0) {
+                    alert("Zaman sıralaması yanlış! Mantığını tekrar kur.");
+                    resetSequence();
+                }
+            }
+        }
+
+        function completeCase() {
+            renderCaseSelection();
+            showScene('scene-selection');
+        }
+
+        // --- CANVAS RAIN EFFECT ---
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let drops = [];
+
+        function initRain() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            drops = [];
+            for(let i=0; i<100; i++) {
+                drops.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    length: Math.random() * 20 + 10,
+                    speed: Math.random() * 10 + 5
+                });
+            }
+        }
+        function drawRain() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            drops.forEach(d => {
+                ctx.moveTo(d.x, d.y);
+                ctx.lineTo(d.x, d.y + d.length);
+                d.y += d.speed;
+                if(d.y > height) { d.y = -d.length; d.x = Math.random() * width; }
+            });
+            ctx.stroke();
+            requestAnimationFrame(drawRain);
+        }
+        window.addEventListener('resize', initRain);
+        initRain(); drawRain();
+
+        // --- REPORT PREP ---
+        const originalShowScene = showScene;
+        showScene = function(id) {
+            if(id === 'scene-report') {
+                const cNames = {logic:'Mantıkçı', intuition:'Sezgici', empathy:'Empatik'};
+                document.getElementById('rep-char').innerText = cNames[gameState.characterClass] || '-';
+                document.getElementById('rep-score').innerText = gameState.score;
+                document.getElementById('rep-ach-count').innerText = gameState.achievements.length;
+                
+                const ul = document.getElementById('rep-achievements');
+                ul.innerHTML = '';
+                gameState.achievements.forEach(aid => {
+                    const a = ALL_ACHIEVEMENTS.find(x=>x.id===aid);
+                    if(a) ul.innerHTML += `<li><strong>${a.name}</strong>: ${a.desc}</li>`;
+                });
+            }
+            originalShowScene(id);
+        }
+
+        // === INITIALIZATION (Run Immediately) ===
+        if(loadState() && gameState.characterClass) {
+            renderCaseSelection();
+            showScene('scene-selection');
+        } else {
+            showScene('scene-menu');
+        }
+
+    </script>
+</body>
+</html>
