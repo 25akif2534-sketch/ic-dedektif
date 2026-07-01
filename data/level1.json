@@ -1,0 +1,117 @@
+{
+  "level_id": 1,
+  "concept": "Algı Yönetimi",
+  "concept_en": "Perception Management",
+  "category": "Zihinsel Format",
+  "background_image": "/assets/levels/level1/bg_v2.png",
+  "intro_wisdom": "Dünya olduğu gibi değildir; biz onu olduğumuz gibi görürüz. Göz, sadece zihnin onayladığı veriyi görür. Gerçeği ararken sıfatları söküp atmalıyız.",
+  "outro_wisdom": {
+    "lies": [
+      "Yanılgı: Arıza ışığını uyuşturmak veya bantlamak (inkâr) sorunu çözer.",
+      "Yanılgı: Her yaşamsal sinyali (korku/acı) bir yok oluş emri sanıp paniklemek gerekir.",
+      "Yanılgı: Kusur her zaman dış dünyada veya başkalarındadır."
+    ],
+    "truths": [
+      "Hakikat: Duygular ve acılar birer komut değil, sadece okunması gereken ham verilerdir.",
+      "Hakikat: Sıfatları söküp attığımızda geriye sadece saf ve çözülebilir bir gerçek kalır.",
+      "Hakikat: Kendi zihnimizdeki lekeleri dışarıya yansıtıp (projeksiyon) onlarla savaşırız."
+    ]
+  },
+  "intro_text": "Ünlü iş insanı Aslan Bey, içeriden kilitli makam odasında darmadağın edilmiş bir sahnede ölü bulundu. Yerde kan izleri, kopuk güvenlik kabloları ve yumruklanmış bir ayna var. Ancak odaya dışarıdan giriş izi yok. Her şüpheli olayı kendi 'bozuk merceğinden' anlatıyor. Gerçeği bulmak için ipuçlarındaki illüzyonları aşmalı ve saf veriye ulaşmalısın.",
+  "clues": [
+    {
+      "id": "clue_1",
+      "title": "İçi Boş İlaç Kutusu",
+      "description": "Cesedin elinde sıkıca duran boş reçeteli ağrı kesiciler. Kalp ağrısı sinyalini (arıza ışığını) ilaçla uyuşturarak tamamen bastırmış ve inkâr etmiştir.",
+      "image": "/assets/levels/level1/clue_coffee.png",
+      "is_natural_clock": false,
+      "time_value": "1. Adım: İnkâr"
+    },
+    {
+      "id": "clue_2",
+      "title": "Kopmuş Kamera Kablosu",
+      "description": "Aslan Bey'in kendi parmak izlerini taşıyan kopuk kablo. Kriz anında gerçeğin nötr kaydını kapatıp, zihnindeki felaket senaryolarına teslim olmuştur.",
+      "image": "/assets/levels/level1/clue_chemical.png",
+      "is_natural_clock": false,
+      "time_value": "2. Adım: Gerçeği Kör Etme"
+    },
+    {
+      "id": "clue_3",
+      "title": "Kanlı Ayna Kırıkları",
+      "description": "Üzerinde sadece Aslan Bey'in kanlı yumruk izleri olan ayna. Kendi içsel korkularını dışarıya yansıtıp (projeksiyon) yansımasıyla boğuşmuştur.",
+      "image": "/assets/levels/level1/clue_fridge.png",
+      "is_natural_clock": false,
+      "time_value": "3. Adım: Projeksiyon ve Kriz"
+    },
+    {
+      "id": "clue_4",
+      "title": "Camdaki Büyük Ayak İzi",
+      "description": "Çamurlu devasa bir ayak izi. [Masum Açıklama]: Aslan Bey'in pencereleri kapatırken giydiği çizmelerdir, camdaki yansımayla optik olarak büyük görünmüştür (Felaket Tellallığı).",
+      "image": "/assets/levels/level1/clue_clock.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_5",
+      "title": "Yırtılmış Hukuki İhtarname",
+      "description": "Masadaki 'İşin bitecek' yazılı ihtarname. [Masum Açıklama]: Standart bir ticari fesih belgesidir, fiziki tehdit içermez; Aslan Bey bunu 'suikast tehdidi' olarak zihninde büyütmüştür.",
+      "image": "/assets/levels/level1/clue_clock.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_6",
+      "title": "Siyah Pamuklu Kumaş",
+      "description": "Izgaraya sıkışmış siyah kumaş. [Masum Açıklama]: Temizlik görevlisinin klimayı temizlerken unuttuğu bezdir. Dışarıdan suikastçı sızmadığını gösterir (Kurban psikolojisi çeldiricisi).",
+      "image": "/assets/levels/level1/clue_clock.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
+    }
+  ],
+  "suspects": [
+    {
+      "id": "suspect_1",
+      "name": "Dr. Melih (Özel Doktor)",
+      "role": "İnkâr Temsilcisi",
+      "portrait": "/assets/levels/level1/suspect_melih.png",
+      "statement": "Aslan Bey bana hafif göğüs sıkışmalarından bahsetti. Çok yoğun çalışıyordu. Önemli bir şey olduğunu düşünmedim, geçici strestir deyip uyuşturucu ağrı kesiciler yazıp yolladım. Keşke üzerinde dursaydım...",
+      "alibi": "Olay saatinde hastanede nöbetçiydi, hastane kayıtları ve kameralarla doğrulandı. Kilitli odaya girmesi imkansızdır.",
+      "motive": "Yoğunluktan dolayı hastasını derinlemesine incelememek, sinyali basit bir stres sıfatıyla geçiştirmek.",
+      "is_guilty": false
+    },
+    {
+      "id": "suspect_2",
+      "name": "Asistan Ali",
+      "role": "Panik Temsilcisi",
+      "portrait": "/assets/levels/level1/suspect_ali.png",
+      "statement": "Kapıyı kırıp girdiğimde her yer kan içindeydi! Hemen rakip şirketin adamlarının havalandırmadan girip onu zehirlediğini anladım! Her şey bitti, şirket batacak, hepimiz mahvolduk!",
+      "alibi": "Olay sırasında binanın girişindeki güvenlik kulübesinde güvenlik şefiyle çay içiyordu. Güvenlik şefi bunu doğruladı.",
+      "motive": "Olayları araştırmadan en kötü senaryoya inanmak ve etrafındakileri paniğe sürüklemek.",
+      "is_guilty": false
+    },
+    {
+      "id": "suspect_3",
+      "name": "Aslan Bey'in Zihni (Panik & İnkâr)",
+      "role": "Gerçek Katil (Zihinsel Süreç)",
+      "portrait": "/assets/levels/level1/suspect_zihin.png",
+      "statement": "Vücudunun verdiği kalp krizi sinyalini (arıza ışığı) ilaçlarla uyuşturup yok saydı. Göğüs ağrısı şiddetlenince panikledi, rakibinin ihtarnamesini suikast emri sandı ve aynadaki kendi yansımasıyla boğuşarak krizini tetikledi.",
+      "alibi": "Yok. Tüm arbede kilitli odanın içinde maktulün kendi zihinsel yanılsamalarıyla gerçekleşmiştir.",
+      "motive": "Sinyali uyuşturmak (İnkâr) ve sonrasında sinyali felaket senaryosu sanıp paniklemek.",
+      "is_guilty": true,
+      "guilty_reason": "Odadaki tüm çeldiricilerin (çizme izi, ihtarname, bez) masum fiziksel açıklamaları odaya kimsenin girmediğini kanıtlar. Aslan Bey önce ağrıyı uyuşturup inkâr etmiş, kriz vurduğunda ise kamerayı koparıp kendi yansımasına saldırmıştır. Katil dışarıda değil, içeridedir."
+    }
+  ],
+  "solution": {
+    "culprit": "Aslan Bey'in Zihni (Panik & İnkâr)",
+    "crime_time": "İlaç Kutusu -> Kopuk Kablo -> Kırık Ayna",
+    "question": "Fiziksel kanıtlar ve masum açıklamalar değerlendirildiğinde; dışarıdan birinin girmediği kilitli odadaki gerçek katil kimdir?",
+    "options": [
+      "Dr. Melih (Özel Doktor)",
+      "Asistan Ali (Panik Temsilcisi)",
+      "Aslan Bey'in Zihni (Panik & İnkâr)",
+      "Rakip CEO (Çeldirici Şüpheli)"
+    ],
+    "answer": "Aslan Bey'in Zihni (Panik & İnkâr)",
+    "proof": "Odadaki tüm çeldiricilerin masum açıklamaları (optik yanılsamalı çizme izi, standart ticari ihtarname, temizlikçinin bezi) odaya birinin sızdığı tezini çürütür. Aslan Bey göğüs ağrısını (arıza ışığını) ilaçla inkâr etmiş, kriz vurduğunda ise panikleyip gerçeğin sesini (kamerayı) kesmiş ve yansımasını suikastçı sanıp aynaya saldırarak kendi sonunu hazırlamıştır."
+  }
+}

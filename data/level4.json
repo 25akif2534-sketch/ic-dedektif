@@ -1,0 +1,123 @@
+{
+  "level_id": 4,
+  "concept": "Mantık",
+  "concept_en": "Logic",
+  "category": "Temel Felsefe",
+  "background_image": "/assets/levels/level4/bg.png",
+  "intro_wisdom": "Mantık, doğru yolu gösteren bir pusuladır; ancak pusulanın kuzeyi yanlış ayarlandıysa her adım sizi uçuruma yaklaştırır. Katilin en kusursuz mantık safsatası, farklı iki odada aynı anda var olabileceğini iddia eden dijital bir yanılsamadan ibarettir.",
+  "outro_wisdom": {
+    "lies": [
+      "YALAN: Ekranda görünen kişi, fiziksel olarak o odada bulunuyordur.",
+      "YALAN: Bir güvenlik kamerasında görünmemek, o koridordan geçmemiş olmak anlamına gelir.",
+      "YALAN: Bir tanığın mantıksal çıkarımı, her zaman doğru gözleme dayanır."
+    ],
+    "truths": [
+      "GERÇEK: Mantık, yanlış bir öncülden yola çıkarsa kaçınılmaz olarak yanlış bir sonuca varır.",
+      "GERÇEK: Göksel mekaniğin mantığı — yıldızların konumu, teleskopun takip açısı — asla safsata kabul etmez.",
+      "GERÇEK: Bir varsayımı sorgulamadan kabul etmek, en tehlikeli mantık hatasıdır."
+    ]
+  },
+  "intro_text": "Şehrin en yüksek noktasındaki Gözlemevi'nin devasa kubbesine adımınızı attığınızda, buz gibi gece rüzgarı yüzünüze çarpıyor. Baş Astronom Prof. Dr. Tarık Yıldız, teleskop balkonundan aşağı itilerek komaya sokulmuş. Kendisi, şehirdeki yozlaşmış bir politikacının yasadışı uydu iletişimlerini ifşa edecek şifreli koordinatları bulmuştu ve bu veri çalındı. Dört şüphelinin hepsinin saat 22:30 için 'mantıklı' bir alibisi var. Ama mantık, yanlış bir varsayımla başlarsa yanlış sonuca varır. Gerçeği yıldızların değişmez kurallarında arayın.",
+  "clues": [
+    {
+      "id": "clue_1",
+      "title": "Teleskopun Otomatik Takip Motoru",
+      "description": "Dev teleskop, belirli bir takım yıldızını takip edecek şekilde ayarlanmış. Takip motorunun dişli açısı ve yerkürenin dönüş hızı hesaplandığında, teleskopun tam 90 dakikadır kimse dokunmadan, yalnız başına dönüşüne devam ettiği anlaşılıyor.",
+      "image": "/assets/levels/level4/clue1.png",
+      "is_natural_clock": true,
+      "time_value": "90 dakika (takip süresi)"
+    },
+    {
+      "id": "clue_2",
+      "title": "Gözlemevi Kubbesi Kapanma Logu",
+      "description": "Kubbeli çatının elektronik motor logu: 'Sistem Hatası: Çatı mekanizması zorlanarak durduruldu.' Log, tam 22:30'da acil durum freninin çekildiğini ve sistemin donduğunu gösteriyor.",
+      "image": "/assets/levels/level4/clue2.png",
+      "is_natural_clock": false,
+      "time_value": "22:30"
+    },
+    {
+      "id": "clue_3",
+      "title": "Kahve Fincanındaki Termodinamik Soğuma",
+      "description": "Astronomun çalışma masasındaki filtre kahvesinin yüzey gerilimi ve termal kamera ile ölçülen sıcaklık düşüş profili (Newton Soğuma Yasası), kahvenin tam olarak gece yarısı 00:00 saati referans alındığında, 90 dakika önce oda sıcaklığıyla dengeye gelmeye başladığını kanıtlıyor.",
+      "image": "/assets/levels/level4/clue3.png",
+      "is_natural_clock": true,
+      "time_value": "00:00 (Şu anki zaman referansı)"
+    },
+    {
+      "id": "clue_4",
+      "title": "Güvenlik Kamerası Kör Nokta Zamanlayıcısı",
+      "description": "Koridordaki motorlu güvenlik kamerası her 5 dakikada bir pan yapıyor. Saat 22:25 ile 22:35 arasında kameranın kör noktasında kalan yangın merdiveni kapısından geçiş yapıldığına dair toz izleri mevcut.",
+      "image": "/assets/levels/level4/clue4.png",
+      "is_natural_clock": false,
+      "time_value": "22:30"
+    },
+    {
+      "id": "clue_5",
+      "title": "Merve'nin Gözlüğü (Çeldirici)",
+      "description": "Balkonun kenarında, Asistan Merve'ye ait numaralı bir gözlük bulunmuştur. Bu gözlük, suçlu tarafından kasıtlı olarak oraya bırakılmıştır.",
+      "image": "/assets/levels/level4/clue5.png",
+      "is_natural_clock": false,
+      "is_red_herring": true,
+      "time_value": null
+    }
+  ],
+  "suspects": [
+    {
+      "id": "suspect_1",
+      "name": "Başkan Cemil Geçersiz",
+      "role": "Yozlaşmış Politikacı",
+      "motive": "Yasadışı uydu veri transferlerinin ifşa edilmesini önlemek ve politik kariyerini kurtarmak.",
+      "portrait": "/assets/levels/level4/suspect1.png",
+      "statement": "Ben saat 22:00 ile 23:00 arasında belediye binasında toplantıdaydım. Saat 22:30'da odamdaki ekrandan televizyon kanalına canlı bağlantı ile röportaj verdim. Televizyon kanalı logları beni orada gösteriyor.",
+      "alibi": "Cemil, canlı bağlantı logları ile alibi kurmaktadır. Ancak Cemil, röportajı 22:00'da derin sahte (deepfake) yapay zeka avatarı kullanarak evinden başlatmış, kendisi ise 22:15'te evden çıkıp gözlemevine gitmiştir. Ekranda onun konuştuğunu zanneden sunucu mantıksal bir safsataya düşmüştür. 22:30'da gözlemevindedir.",
+      "is_guilty": true,
+      "guilty_reason": "Cemil, 22:00'de deepfake avatarını canlı yayına bağlayarak sahte bir alibi oluşturmuş, 22:15'te yangın merdivenini (kamera kör noktasını) kullanarak 22:30'da teleskop balkonuna ulaşmıştır. Veriyi çalmış, kurbanı itmiş ve Merve'nin gözlüğünü bırakarak iz sürmüştür. Kahve soğuma süresi ve teleskop motor açısı (90 dakika) hesaplandığında suç anı 22:30 olarak doğrulanır — tam da Cemil'in 'canlı yayında' olduğunu iddia ettiği an."
+    },
+    {
+      "id": "suspect_2",
+      "name": "Merve Önerme",
+      "role": "Araştırma Asistanı",
+      "motive": "Tezindeki verilerin hocası tarafından çalındığını iddia etmesi ve hakkını aramak istemesi.",
+      "portrait": "/assets/levels/level4/suspect2.png",
+      "statement": "Gözlüğüm nasıl oraya gitti bilmiyorum. Ben 22:15'te kütüphanede makale okuyordum. Kitap ödünç alma kayıtlarım 22:25'te sistemde var.",
+      "alibi": "Kütüphane RFID barkod sistemleri, Merve'nin saat 22:25'te şehir merkezindeki kütüphaneden kitap aldığını kesinlikle doğrulamaktadır. Olay yerindeki gözlüğü kasıtlı bırakılmıştır.",
+      "is_guilty": false,
+      "guilty_reason": null
+    },
+    {
+      "id": "suspect_3",
+      "name": "Hale Kıyas",
+      "role": "Gazeteci",
+      "motive": "Bu büyük haberi patlatmak için verileri ele geçirip şöhret olma arzusu.",
+      "portrait": "/assets/levels/level4/suspect3.png",
+      "statement": "22:30'da başkanın televizyon röportajını izliyordum, adam ekrandaydı! Ben o sırada televizyon kanalının reji odasındaydım.",
+      "alibi": "Hale, odadaki kişinin avatar mı gerçek mi olduğunu ayırt edememiş, 'Ekranda konuşuyor' algısına dayanarak Cemil'in masum olduğunu varsaymıştır. Hale'nin reji odasında olduğu onlarca çalışan tarafından doğrulanmıştır.",
+      "is_guilty": false,
+      "guilty_reason": null
+    },
+    {
+      "id": "suspect_4",
+      "name": "Kaan Öncül",
+      "role": "Gözlemevi Temizlikçisi",
+      "motive": "Ağır borçları nedeniyle şifreli diski çalıp karaborsada satma umudu.",
+      "portrait": "/assets/levels/level4/suspect4.png",
+      "statement": "O gece 22:00 ile 23:00 arasında tüm kameralar çalışıyordu, zemin katı temizliyordum. Üst kata hiç çıkmadım.",
+      "alibi": "Kaan'ın temizlik robotunun haritalama logları ve hareket sensörleri, onun suç anı olan 22:30'da zemin katta olduğunu kanıtlamaktadır.",
+      "is_guilty": false,
+      "guilty_reason": null
+    }
+  ],
+  "solution": {
+    "culprit": "Başkan Cemil Geçersiz",
+    "crime_time": "22:30",
+    "question": "Gözlemevi balkonundan kurbanı iterek verileri çalan kişi kimdir?",
+    "options": [
+      "Başkan Cemil Geçersiz",
+      "Merve Önerme",
+      "Hale Kıyas",
+      "Kaan Öncül"
+    ],
+    "answer": "Başkan Cemil Geçersiz",
+    "proof": "Kahvedeki termodinamik soğuma eğrisi ve şu anki yerel saat (00:00) birleştirildiğinde suçun tam 90 dakika önce (22:30) işlendiği görülür. Teleskopun 90 dakikadır başıboş dönüşü bunu teyit eder. Başkan Cemil, tam bu saatte televizyon kanalında canlı yayında olduğunu iddia etmektedir. Ancak yayındaki görüntü, Cemil'in daha önceden kurduğu bir deepfake algoritmasıdır. Cemil fiziksel olarak o stüdyoda değildi — yangın merdivenini kullanarak kör noktadan gözlemevine girmiştir. Merve'nin gözlüğü ise Cemil tarafından kasıtlı olarak suç yerine bırakılmış bir çeldiricidir. Cemil'in alibisi, 'ekranda görünen kişi stüdyodadır' şeklindeki yanlış öncüle dayanan klasik bir mantık safsatasıdır."
+  }
+}

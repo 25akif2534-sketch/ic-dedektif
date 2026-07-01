@@ -1,0 +1,115 @@
+{
+  "level_id": 3,
+  "concept": "Fikir",
+  "concept_en": "Idea",
+  "category": "Temel Felsefe",
+  "background_image": "/assets/levels/level3/bg.png",
+  "intro_wisdom": "Fikir, zihinsel bir tasarımdır; henüz fiziksel bir forma bürünmemiş saf bir potansiyeldir. Ancak kağıda döküldüklerinde, tescillendiklerinde veya bir esere dönüştüklerinde mülkiyete konu olurlar. Bir fikrin doğum belgesi, üzerine atılan ilk mürekkebin kuruma hızıyla mühürlenir. Yapay bir parıltı, gerçek bir yaratımın doğal gölgesini asla örtemez.",
+  "outro_wisdom": {
+    "lies": [
+      "YALAN: Dijital saatler ve bulut yedeklemeler güvenilir zaman kayıtlarıdır — kolayca manipüle edilebilirler.",
+      "YALAN: Olay yerinde bulunan kişisel eşya suçluyu işaret eder — bilinçli olarak yerleştirilmiş bir iftira olabilir.",
+      "YALAN: Canlı TV yayını veya sahne performansı kusursuz bir alibidir — suç, yayın başlamadan önce işlenmiş olabilir."
+    ],
+    "truths": [
+      "GERÇEK: Tiyatro projektörünün termodinamik soğuma hızı manipüle edilemez.",
+      "GERÇEK: Daktilo mürekkebinin kuruma ve kağıda nüfuz etme oranı bir fikrin doğuş anını fiziksel olarak mühürler.",
+      "GERÇEK: Ay ışığının vitray camdan geçiş açısı evrensel bir saat referansıdır."
+    ]
+  },
+  "intro_text": "Terk edilmiş tarihi tiyatronun tozlu sahnesine adım attığınızda, ağır bir küf ve yanık spot lambası kokusu burnunuza çarpıyor. Dahi tiyatro yazarı Kenan Kalem, tiyatronun kulisinde ölü bulunmuş. Yıllardır sır gibi sakladığı, dünyayı sarsacak devrimsel tiyatro oyunu senaryosunun tek kopyası çalınmış. Tiyatronun saatleri bozuk, elektrikler kesik. Ancak tavandaki devasa spot projektörün sıcaklığı, daktilodaki son sayfanın mürekkebi ve vitray pencereden süzülen ay ışığı size cinayetin gerçek zamanını fısıldıyor.",
+  "clues": [
+    {
+      "id": "clue_1",
+      "title": "Tiyatro Projektörünün Soğuma Oranı",
+      "description": "Sahne aydınlatmasında kullanılan devasa 2000 watt'lık halojen projektörün camı ve tungsten filamanı hala ılık. Fiziğin termodinamik soğuma yasalarına göre, bu ampulün oda sıcaklığına inme eğrisi, projektörün elektriğinin tam 150 dakika (2.5 saat) önce kesildiğini kanıtlıyor.",
+      "image": "/assets/levels/level3/clue1.png",
+      "is_natural_clock": true,
+      "time_value": "150 dakika (2.5 saat)"
+    },
+    {
+      "id": "clue_2",
+      "title": "Daktilo Mürekkebinin Kuruması",
+      "description": "Kurbanın masasında duran eski tip daktiloda yarım kalmış son sayfa. Mürekkebin asidik selüloz kağıda nüfuz etme ve oksidasyon oranı incelendiğinde, bu metnin tam 210 dakika (3.5 saat) önce yazıldığı kanıtlanıyor.",
+      "image": "/assets/levels/level3/clue2.png",
+      "is_natural_clock": true,
+      "time_value": "210 dakika (3.5 saat)"
+    },
+    {
+      "id": "clue_3",
+      "title": "Ay Işığı ve Vitray Pencere",
+      "description": "Gece gökyüzündeki dolunayın ışığı, tarihi tiyatronun vitray penceresinden geçerek sahne zeminindeki 'Hamlet' yazılı yer işaretinin tam üzerine düşüyor. Astronomik ay açısı hesaplaması, şu anki saatin gece tam 23:30 olduğunu kesin olarak gösteriyor.",
+      "image": "/assets/levels/level3/clue3.png",
+      "is_natural_clock": true,
+      "time_value": "23:30"
+    },
+    {
+      "id": "clue_4",
+      "title": "Kırık Makyaj Aynası",
+      "description": "Kulis odasındaki dijital saat 22:00'da kırılarak durmuş. Ancak bu sadece şaşırtmaca. Kurban bu saatte öldürülmedi, katil saati bilerek kırarak sahte bir cinayet zamanı yaratmaya çalıştı.",
+      "image": "/assets/levels/level3/clue4.png",
+      "is_natural_clock": false,
+      "is_red_herring": true,
+      "time_value": null
+    }
+  ],
+  "suspects": [
+    {
+      "id": "suspect_1",
+      "name": "Cenk Çırak",
+      "role": "Yazarın Kıskanç Asistanı",
+      "motive": "Ustasının gölgesinde kalmaktan bıkması ve çalacağı senaryoyu kendi adıyla yayınlayarak şöhret olma hırsı.",
+      "portrait": "/assets/levels/level3/suspect1.png",
+      "statement": "Kenan Bey'in ölümü bir trajedi. Ben saat 21:30 ile 22:30 arasında yan sokaktaki caz barda piyano çalıyordum. Sahne aldığım barın kameraları beni çekiyordu, o saatte tiyatroda olmam imkansız.",
+      "alibi": "Cenk, saat 21:30'da caz barda sahne aldığını kanıtlayabiliyor. Ancak doğal saat olan projektör soğuma analizine göre suç tam olarak 21:00'de işlenmiştir. Cenk'in 21:00 için hiçbir alibisi yoktur.",
+      "is_guilty": true,
+      "guilty_reason": "Cinayet saati olan 21:00'de (sahne performansından yarım saat önce) tiyatroya gizlice girmiş, kurbanı öldürüp senaryoyu çalmış ve elektrikleri keserek projektörü kapatmıştır. Alibisi olan sahne performansı 21:30'da başlamıştır; suç anı olan 21:00'de hiçbir alibisi yoktur. Şüpheyi başkasına çekmek için kulis saatini 22:00'da duracak şekilde kırmıştır."
+    },
+    {
+      "id": "suspect_2",
+      "name": "Rıza İflas",
+      "role": "Borçlu Yapımcı",
+      "motive": "Tiyatrosu batmak üzeredir, tefecilere borcunu ödemek için Kenan'ın hit olacak yeni oyununun haklarını ele geçirmek zorundadır.",
+      "portrait": "/assets/levels/level3/suspect2.png",
+      "statement": "Ben saat 20:30 ile 21:30 arasında şehir dışındaki evimdeydim. Otoyol gişe kayıtları ve telefon sinyallerim bunu doğrulayabilir.",
+      "alibi": "Saat 20:30 ile 21:30 arasında şehir dışında olduğu otoyol gişe kayıtları ve baz istasyonu verileriyle, suç anı olan 21:00'de tiyatroda olması imkansızdır.",
+      "is_guilty": false,
+      "guilty_reason": ""
+    },
+    {
+      "id": "suspect_3",
+      "name": "Defne Diva",
+      "role": "Kovulan Başrol Oyuncusu",
+      "motive": "Yıllarını verdiği tiyatrodan kovulması ve yeni oyunda kendisine rol verilmemesinin yarattığı kin.",
+      "portrait": "/assets/levels/level3/suspect3.png",
+      "statement": "Kenan beni projeden kovdu ama onu öldürmedim. Saat 21:00 ile 22:00 arasında karakolda trafik kazası ifadem alınmaktaydı. Resmi tutanak var.",
+      "alibi": "Polis merkezindeki resmi tutanak ve güvenlik kameraları, Defne'nin saat 21:00 ile 22:00 arasında karakolda ifade verdiğini doğrulamaktadır.",
+      "is_guilty": false,
+      "guilty_reason": ""
+    },
+    {
+      "id": "suspect_4",
+      "name": "Bekçi Salih",
+      "role": "Gece Bekçisi",
+      "motive": "Maddi sıkıntıları nedeniyle tiyatronun arka kapısını açık bırakması için rüşvet almış olabilir.",
+      "portrait": "/assets/levels/level3/suspect4.png",
+      "statement": "Ben saat 20:45 ile 21:15 arasında bodrum kattaki kazan dairesinde su sızıntısını tamir ediyordum. Yukarıdaki sesleri duymadım.",
+      "alibi": "Kazan dairesindeki elektronik kartlı giriş-çıkış logları, Salih'in saat 20:45 ile 21:15 arasında, yani cinayet anı olan 21:00'de kilitli bodrum katında olduğunu kanıtlamaktadır.",
+      "is_guilty": false,
+      "guilty_reason": ""
+    }
+  ],
+  "solution": {
+    "culprit": "Cenk Çırak",
+    "crime_time": "21:00",
+    "question": "Doğal saatlerin hesaplamasına göre cinayet ve hırsızlık hangi saatte gerçekleştirilmiştir?",
+    "options": [
+      "20:00",
+      "21:00",
+      "21:30",
+      "22:00"
+    ],
+    "answer": "21:00",
+    "proof": "Ay ışığının vitraydaki konumu dedektifin olay yerine girdiği anın tam 23:30 olduğunu kanıtlar. Projektörün soğuma eğrisi analizi, projektörün tam 150 dakika (2.5 saat) önce kapatıldığını gösterir: 23:30 - 2:30 = 21:00. Cinayet ve hırsızlık tam bu saatte yapılmıştır. Daktilo mürekkebi ise senaryonun 20:00'de (210 dakika önce) tamamlandığını doğrular. Cenk'in alibisi olan bar performansı saat 21:30'da başlamıştır; cinayet anı olan 21:00'de hiçbir alibisi yoktur. Kırık dijital saatin gösterdiği 22:00 sadece kurnazca bir çeldiricidir."
+  }
+}

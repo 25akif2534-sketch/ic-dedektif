@@ -1,0 +1,116 @@
+{
+  "level_id": 2,
+  "concept": "Zemin Etüdü ve Temel",
+  "concept_en": "Subconscious and Core Beliefs",
+  "category": "Zihinsel Format",
+  "background_image": "/assets/levels/level2/bg.png",
+  "intro_wisdom": "Bir binanın sağlamlığı üzerindeki süslemelerde değil, görünmeyen temelindedir. Zihnimiz de böyledir; bilinçaltındaki çürük bir kök inanç (öğrenilmiş çaresizlik), üzerine kurulan en kusursuz projeyi bile sabote ederek çökertebilir.",
+  "outro_wisdom": {
+    "lies": [
+      "Yanılgı: Bir sorunu sadece dış görünüşü güzelleştirerek (yüzeydeki olumlamalarla) çözebiliriz.",
+      "Yanılgı: Tehlike sinyallerini ve raporları sümen altı etmek (inkâr), sorunu ortadan kaldırır.",
+      "Yanılgı: Başarısızlıklarımızın ve sabote edici davranışlarımızın tek nedeni dış dünyadaki şanssızlıklardır."
+    ],
+    "truths": [
+      "Hakikat: Bilinçaltındaki çürük kök inançlar, biz fark etmeden tüm başarılarımızı sabote etmemize neden olur.",
+      "Hakikat: Kök inançları bulup iyileştirmeden üzerine inşa edilen hiçbir zihinsel yapı ayakta kalamaz.",
+      "Hakikat: Zihinsel arkeolojiyle en derine (sondaj) inip geçmişten miras kalan kodları çözmek gerekir."
+    ]
+  },
+  "intro_text": "Ünlü mimar Selim Bey, yeni inşa ettiği kule projesinin temel çukurunda kafasına sert bir cisimle vurularak öldürülmüş halde bulunur. Ertesi gün kulede zemin kayması nedeniyle derin çatlaklar oluşmuştur. Olay yerindeki fiziksel ve psikolojik ipuçlarını inceleyerek temeldeki sırrı açığa çıkarmalı ve gerçeğe ulaşmalısın.",
+  "clues": [
+    {
+      "id": "clue_1",
+      "title": "Hasan'ın Babasına Ait Eski İflas Belgesi",
+      "description": "Hasan'ın cüzdanında taşıdığı, babasının geçmişteki iflasına dair gazete kupürü. Geçmişin korkularını ve başarısızlık kodlarını miras kalan ağır bir ceket gibi üzerinde taşımaktadır.",
+      "image": "/assets/levels/level2/clue_1.png",
+      "is_natural_clock": false,
+      "time_value": "1. Adım: Miras Kalan Korku"
+    },
+    {
+      "id": "clue_2",
+      "title": "Çamurlu Zemin Sıvılaşması Numunesi",
+      "description": "Hasan'ın laboratuvarda test ettirip çürük olduğunu bildiği halde temele döktüğü kalitesiz harç örneği. Bilinçaltındaki başarısızlık inancı, onu temeli sabote etmeye ve çürük malzeme kullanmaya itmiştir.",
+      "image": "/assets/levels/level2/clue_2.png",
+      "is_natural_clock": false,
+      "time_value": "2. Adım: Sabotaj"
+    },
+    {
+      "id": "clue_3",
+      "title": "Cinayet Aleti Sondaj Demiri",
+      "description": "Üzerinde Hasan'ın parmak izleri ve kurbanın kanı bulunan ağır bir sondaj demiri. Selim Bey sabotajı fark edip temeli denetlemek isteyince, Hasan kök inancını ve suçunu gizlemek için bu demirle ona vurmuştur.",
+      "image": "/assets/levels/level2/clue_3.png",
+      "is_natural_clock": false,
+      "time_value": "3. Adım: Susturma ve Cinayet"
+    },
+    {
+      "id": "clue_4",
+      "title": "Süslü Boya Kutusu",
+      "description": "Çatlak duvarların yanında bulunan boyalar. [Masum Açıklama]: Dekorasyon ekibinin açılış için getirdiği sıradan duvar boyasıdır. Derin çatlağı boyayla kapatma (sahte olumlama) yanılgısını temsil eder.",
+      "image": "/assets/levels/level2/clue_4.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_5",
+      "title": "Yerdeki Kopuk İnce İp",
+      "description": "Kurbanın yanında duran ince bir ip. [Masum Açıklama]: Şantiyedeki hizalama ve ölçüm kordonudur, cinayetle ilgisi yoktur. Devasa bir fili tutan o incecik ip gibi öğrenilmiş çaresizliği temsil eder.",
+      "image": "/assets/levels/level2/clue_5.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_6",
+      "title": "Komşu Binanın Hasar Raporu",
+      "description": "Yan binanın belediye tarafından verilen tahliye kararı. [Masum Açıklama]: Yan bina eski su sızıntısı nedeniyle tahliye edilmiştir, kuledeki cinayetle bağı yoktur. Sorumluluğu dışarıya atma (kurban psikolojisi) yanılgısını simgeler.",
+      "image": "/assets/levels/level2/clue_6.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
+    }
+  ],
+  "suspects": [
+    {
+      "id": "suspect_1",
+      "name": "Dekoratör Can",
+      "role": "Yüzey Temsilcisi (Giriş Kat)",
+      "portrait": "/assets/levels/level2/suspect_can.png",
+      "statement": "Ben sadece kuleyi güzelleştirmek için buradayım, temelde ne olduğu beni ilgilendirmez. Binanın dış görünüşü harika olmalı, olumlu düşünelim olumlu olsun!",
+      "alibi": "Cinayet gecesi lobideki dekorasyon düzenlemelerini planlamak için çiçekçide sipariş teslimatı alıyordu, çiçekçi sahibi bunu doğruladı.",
+      "motive": "Temeldeki derin çatlakları ve kaymayı sadece yüzeydeki estetikle/boyayla (sahte olumlama) kapatmaya çalışmak.",
+      "is_guilty": false
+    },
+    {
+      "id": "suspect_2",
+      "name": "Denetçi Kemal",
+      "role": "İnkâr Temsilcisi",
+      "portrait": "/assets/levels/level2/suspect_kemal.png",
+      "statement": "Evet, zemin etüdü raporlarında kayma riski görünüyordu. Ancak projeyi durdurup zaman kaybetmemek için raporu sümen altı ettim. Tehlike ışığını bantladım diyebiliriz.",
+      "alibi": "Olay saatinde belediye imar kurulu toplantısındaydı. Diğer üyeler ve toplantı tutanakları bunu kanıtlıyor.",
+      "motive": "Sorumluluktan kaçmak ve işin gecikmemesi için tehlike sinyallerini (arıza ışıklarını) görmezden gelip inkâr etmek.",
+      "is_guilty": false
+    },
+    {
+      "id": "suspect_3",
+      "name": "Müteahhit Hasan",
+      "role": "Gerçek Katil (Miras Kalan İnanç)",
+      "portrait": "/assets/levels/level2/suspect_hasan.png",
+      "statement": "Bizim aile bu topraklarda asla dürüstçe kazanamaz. Babam da aynı arazide her şeyini kaybetmişti. Selim Bey kusursuz bir proje çizdiğinde zihnimdeki o çürük kolonu aşamadım; inşaatın çökeceğine inanıp harçtan çaldım. Selim Bey fark edince her şey bitti...",
+      "alibi": "Yok. Olay saatinde şantiyede yalnız başına malzeme kontrolü yaptığını iddia ediyor ancak kendisini doğrulayacak kimse yok.",
+      "motive": "Babasından miras kalan başarısızlık inancı (öğrenilmiş çaresizlik) ile projeyi sabote edip, durumu fark eden Selim Bey'i susturmak.",
+      "is_guilty": true,
+      "guilty_reason": "Hasan, babasının geçmişteki iflasından kalan kök inançla (iflas belgesi) projenin başarısız olacağına inanmış ve harca çürük malzeme karıştırarak temeli sabote etmiştir (sıvılaşma numunesi). Durumu fark edip zemin etüdü yapmaya çalışan Selim Bey'i engellemek için ise onu şantiyedeki sondaj demiriyle öldürmüştür. Diğer delillerin tamamı masum şantiye veya dekorasyon unsurlarıdır."
+    }
+  ],
+  "solution": {
+    "culprit": "Müteahhit Hasan",
+    "crime_time": "Hasan'ın Babasına Ait Eski İflas Belgesi -> Çamurlu Zemin Sıvılaşması Numunesi -> Cinayet Aleti Sondaj Demiri",
+    "question": "Fiziksel deliller, şüpheli ifadeleri ve zihinsel metaforlar değerlendirildiğinde; kuleyi sabote eden ve Selim Bey'i öldüren gerçek katil kimdir?",
+    "options": [
+      "Dekoratör Can (Yüzey Temsilcisi)",
+      "Denetçi Kemal (İnkâr Temsilcisi)",
+      "Müteahhit Hasan (Miras Kalan İnanç)"
+    ],
+    "answer": "Müteahhit Hasan (Miras Kalan İnanç)",
+    "proof": "Hasan, babasının geçmişteki iflasından kalan kök inançla (iflas belgesi) projenin başarısız olacağına inanmış ve harca çürük malzeme karıştırarak temeli sabote etmiştir (sıvılaşma numunesi). Durumu fark eden Selim Bey'i engellemek için ise onu şantiyedeki sondaj demiriyle öldürmüştür. Diğer delillerin tamamı masum şantiye veya dekorasyon unsurlarıdır."
+  }
+}
