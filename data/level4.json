@@ -4,65 +4,65 @@
   "concept_en": "Investigation & Verification",
   "category": "Zihinsel Format",
   "background_image": "/assets/levels/level4/bg.png",
-  "intro_wisdom": "Kiralık fikirlerle zihinsel mülk sahibi olunmaz. Zemin etüdü yapılmamış bir inanç, fırtınada ilk yıkılacak prefabrik bir kulübeden farksızdır. Gerçek, sorgulanmaktan korkmaz; altını kazıdıkça parıldayan saf altın gibidir.",
+  "intro_wisdom": "Başkasının kalıplarına göre biçilen bir hayat, üzerinizde pot yapan eğreti bir elbise gibidir. Gerçek özgünlük, başkalarını taklit etmekte değil; kendi vicdan pusulanızla diktiğiniz terzi işi değerlerdedir.",
   "outro_wisdom": {
     "lies": [
-      "Yanılgı: Herkesin kabul ettiği hazır fikirler ('Konfeksiyon') bizim zihnimize de tam oturur.",
-      "Yanılgı: İnançlarımızı sorgulamak onları zayıflatır veya tamamen yıkar.",
-      "Yanılgı: Dışarıdan kusursuz görünen vitrinler, içerideki çürük temelleri sonsuza dek gizleyebilir."
+      "Yanılgı: Toplumun genel kabul gördüğü hazır düşünce kalıpları ('Konfeksiyon') herkese tam oturur.",
+      "Yanılgı: Başkalarının takdirini kazanmak için onların kopyası olmak ('Fotokopi') bize değer katar.",
+      "Yanılgı: Sloganları ve hazır ezberleri papağan gibi tekrarlamak, bizi bilgili ve haklı gösterir."
     ],
     "truths": [
-      "Hakikat: Kendi akıl süzgecimizden geçirmediğimiz her düşünce, zihnimizde başkasının adına kayıtlı bir kiracıdır.",
-      "Hakikat: Fikirlerimizi karot testine (sorgulamaya) tabi tutmak, onları yıkmak değil, sarsılmaz bir kaya zemine oturtmaktır.",
-      "Hakikat: Gerçek hakikat, üzerine ne kadar gidilirse gidilsin değerinden hiçbir şey kaybetmeyen saf altındır."
+      "Hakikat: Kendi akıl süzgecimizden geçmeyen her fikir, ruhumuza dar gelen emanet bir giysi gibidir.",
+      "Hakikat: Fikirlerimizi karşıt görüşlerle test edip doğrulamak (tahkik), zihinsel imzamızı korumanın tek yoludur.",
+      "Hakikat: Taklitçiliğin yapay çiçekleri arasında solmayan tek şey, özgünlüğün kendi köklerinden beslenen çınar ağacıdır."
     ]
   },
-  "intro_text": "Şehrin en lüks gökdeleni olan 'Seri Kule'nin açılış galasına saatler kala, binanın bodrumundaki beton test laboratuvarından acı bir haber gelir. Binanın zemin etüdü ve dayanıklılık raporunu hazırlayan Mimar Selim Kaya, kafasına vurulan sert bir cisimle öldürülmüş ve hazırladığı statik raporu yok edilmiştir. Gökdelenin dış cephesi ışıl ışıl parıldamakta ve davetliler yukarıda dans etmektedir. Ancak temelde bir şeyler çürüktür. Katil, bu çürük temeli örtbas etmek isteyen biri midir, yoksa kuledeki sahte tabloların sırrını korumaya çalışan bir sanat hırsızı mı? Eline fenerini al ve gerçeği ortaya çıkarmak için bu zihinsel kazıya başla.",
+  "intro_text": "Şehrin en seçkin moda evi olan 'Kaya Couture'ün loş ışıklı tasarım atölyesinde, haute couture dünyasının efsanevi ismi Baş Terzi Selim Kaya cansız bedenine sarılmış halde bulunur. Atölye darmadağındır; Selim Bey'in üzerinde çalıştığı ve sır gibi saklanan yeni sezon tasarımlarının eskizleri çalınmıştır. Selim Kaya, her dikişinde kendi özgün imzasını barındıran ve seri üretime karşı çıkan bir ustaydı. Son günlerde atölye tasarımlarının ucuz fabrikalarda kopyalanıp satıldığını fark etmiş ve bu 'taklitçilik' şebekesini araştırmaya başlamıştı. Katil, bu taklit pazarından milyarlar kazanan bir hazır giyim baronu mu, yoksa atölyenin içindeki bir başka taklitçi mi?",
   "clues": [
     {
       "id": "clue_1",
-      "title": "Beton Karot Numunesi",
-      "description": "Mimar Selim'in elinde sıkıca tuttuğu, binanın C-4 kolonundan alınmış silindir şeklinde beton numunesi (karot). Laboratuvardaki pres testine sokulduğunda, standart basıncın çok altında tuzla buz olduğu görülüyor. Binanın taşıyıcı sistemi tamamen çürük betonla inşa edilmiştir (Zemin Etüdü ve Tahkik).",
+      "title": "Özel Dikim Kumaş Numunesi",
+      "description": "Selim Kaya'nın elinde sıkıca tuttuğu, özel dokuma İngiliz yününden kesilmiş küçük bir kumaş örneği (numune/karot). Üzerinde katilin aceleyle kaçarken bıraktığı ve Selim Bey'in son anda koparabildiği lacivert bir iplik parçası var. Bu özel iplik, seri üretim konfeksiyon kumaşlarına aittir.",
       "image": "/assets/levels/level4/clue_1.png",
       "is_natural_clock": false,
-      "time_value": "1. Adım: Çürük Temel"
+      "time_value": "1. Adım: Orijinal Doku"
     },
     {
       "id": "clue_2",
-      "title": "Hazır Giyim Ceket Lifleri",
-      "description": "Olay yerindeki kırık beton parçasının pürüzlü yüzeyine takılmış lacivert renkli kumaş lifleri. Laboratuvar analizinde bu liflerin seri üretim ('Konfeksiyon') ucuz polyester bir takıma ait olduğu belirlenmiştir. Galip Seri'nin gardırobundaki tüm takımlar ise özel terzi dikimidir.",
+      "title": "Pot Yapan Ceket Astarı",
+      "description": "Atölyedeki masanın altına düşmüş, seri üretim ('Konfeksiyon') ucuz bir cekete ait astar parçası. Astarın dikişleri düzensizdir ve standart beden ölçülerine göre kesilmiştir. Selim Kaya'nın atölyesinde sadece kişiye özel, kusursuz ölçülü ('Terzi Dikimi') kıyafetler üretilirdi.",
       "image": "/assets/levels/level4/clue_2.png",
       "is_natural_clock": false,
-      "time_value": "2. Adım: Taklit Kimlik"
+      "time_value": "2. Adım: Kalıp Hatası"
     },
     {
       "id": "clue_3",
-      "title": "Karot Test Cihazı Logu",
-      "description": "Laboratuvardaki bilgisayarda, hidrolik pres makinesinin en son test çalıştırma kaydı. Saat 22:15'te bir karot numunesinin kırılma testi başlatılmış ve 22:18'de zorla durdurulmuştur. Bu saat, katilin cinayetten hemen önce testi durdurup veriyi silmeye çalıştığı anı göstermektedir.",
+      "title": "Çilingir Maymuncuğu",
+      "description": "Selim Kaya'nın orijinal çizimlerinin saklandığı çelik kasanın yanında bulunan profesyonel çilingir maymuncuğu. Kasa zorlanarak değil, anahtar deliğine uygun dişliler uydurularak sessizce açılmıştır. Katil, gerçeğe ve tasarımlara zorbalıkla değil, sızarak ulaşmaya çalışmıştır.",
       "image": "/assets/levels/level4/clue_3.png",
       "is_natural_clock": false,
-      "time_value": "3. Adım: Gerçeğin Karartılması"
+      "time_value": "3. Adım: Sızma ve Hırsızlık"
     },
     {
       "id": "clue_4",
-      "title": "Replika Tablolar",
-      "description": "Galeride sergilenen lüks tabloların arkasında 'Replika - Güvenlik Amaçlıdır' damgası bulunmuştur. [Masum Açıklama]: Değerli tabloların çalınma riskine karşı, gala öncesi sergide fotokopi/baskı replikalar kullanılması ve orijinallerinin kasada tutulması galerinin yasal güvenlik standardıdır.",
+      "title": "Yapay Çiçek Desenli Eşarp",
+      "description": "Cansız bedenin hemen yanındaki mankenin boynuna dolanmış yapay gül desenli polyester eşarp. [Masum Açıklama]: Asistan Canan'ın prova mankenlerini süslemek için pazardan aldığı ucuz, kokusuz yapay aksesuarlardan biridir; cinayetle doğrudan ilişkisi yoktur.",
       "image": "/assets/levels/level4/clue_4.png",
       "is_natural_clock": false,
       "is_red_herring": true
     },
     {
       "id": "clue_5",
-      "title": "Bozuk Plak Çalar",
-      "description": "Lobi katındaki nostaljik plak çalarda sürekli aynı melodinin tekrar etmesi. [Masum Açıklama]: Cihazın okuyucu iğnesindeki aşınma nedeniyle plak takılmış ve aynı 3 saniyelik kısmı çalmaktadır. Herhangi bir şifre veya mesaj içermeyen mekanik bir arızadır.",
+      "title": "Dönen Pikap Plak",
+      "description": "Atölyenin köşesinde duran ve iğnesi takıldığı için sürekli aynı 3 saniyelik melodiyi çalan eski plak çalar. [Masum Açıklama]: Selim Bey'in müzik dinlerken kullandığı, iğnesindeki tozlanma nedeniyle aynı yeri tekrarlayan sıradan bir plak takılmasıdır.",
       "image": "/assets/levels/level4/clue_5.png",
       "is_natural_clock": false,
       "is_red_herring": true
     },
     {
       "id": "clue_6",
-      "title": "Prefabrik Şantiye Ofisi",
-      "description": "Şantiyenin arkasındaki derme çatma prefabrik şantiye kulübesinin rüzgardan tavanının uçmuş olması. [Masum Açıklama]: Geçici kullanım için kurulmuş temelsiz bir prefabrik yapıdır. Ana binanın yapısal bütünlüğü veya statiği ile hiçbir ilgisi yoktur.",
+      "title": "Prefabrik Giyinme Kabini",
+      "description": "Atölyenin arka bahçesindeki açık hava defilesi için hızlıca kurulmuş, rüzgardan tavanı çökmüş prefabrik giyinme kabini. [Masum Açıklama]: Defile hazırlığı için geçici kurulan, temelsiz ve dayanıksız derme çatma bir yapıdır; cinayetle ilgisi yoktur.",
       "image": "/assets/levels/level4/clue_6.png",
       "is_natural_clock": false,
       "is_red_herring": true
@@ -72,47 +72,47 @@
     {
       "id": "suspect_galip",
       "name": "Galip Seri",
-      "role": "Proje Müteahhidi",
+      "role": "Hazır Giyim Baronu",
       "portrait": "/assets/levels/level4/suspect_galip.png",
-      "statement": "Olay gecesi 22:00-23:00 saatleri arasında yan binadaki lüks restoranda düzenlenen açılış galasındaydım. Kameralar ve gazeteciler beni orada çekti. Üzerimdeki bu özel tasarım terzi dikimi takım elbiseyle boy gösterdim. Selim'in raporuyla ilgim yok.",
+      "statement": "Olay gecesi 22:00-23:00 saatleri arasında yan binadaki lüks restoranda düzenlenen açılış galasındaydım. Kameralar ve gazeteciler beni orada çekti. Üzerimdeki bu özel tasarım terzi dikimi takım elbiseyle boy gösterdim. Selim'in atölyesiyle işim olmaz.",
       "alibi": "Galip, gala saatinde davette olduğunu basına servis edilen fotoğraflarla kanıtlamaya çalışmaktadır. Ancak fotoğraflardaki takım elbisenin omuzlarında potluklar ve pot kesimler mevcuttur. Oysa Galip'in takım elbisesi terzi dikimidir.",
-      "motive": "Binanın temelsiz olduğunu ve çürük beton kullanıldığını ortaya çıkaran Mimar Selim'in raporunu engellemek, milyar dolarlık projeyi ve itibarını kurtarmak.",
+      "motive": "Selim Kaya'nın özgün tasarımlarını çalarak kendi fabrikalarında ucuz konfeksiyon ürünü olarak basmak ve taklitçilik davasını engellemek.",
       "is_guilty": true,
-      "guilty_reason": "Galip Seri, binanın temelsiz olduğunu ve çürük beton kullanıldığını ortaya çıkaran Mimar Selim'i öldürmüştür. Kendisine gala saatinde alibi oluşturmak için, kendi ölçülerine göre dikilmiş özel tasarım takım elbiseyi ('Terzi Dikimi') boy ve fizik olarak kendisine benzeyen şoförüne giydirip davete göndermiştir. Kendisi ise şoförünün sıradan hazır giyim ('Konfeksiyon') ceketini giyerek bodrum katındaki laboratuvara inmiş ve cinayeti işlemiştir. Ancak aceleyle kaçarken laboratuvardaki kırık beton pürüzlerine takılan hazır giyim ceketten lifler kalmıştır. Bu pot yapan, standart beden ceket Galip'in üzerine tam oturmamış ve gerçeği ortaya çıkarmıştır."
+      "guilty_reason": "Galip Seri, Selim'in özgün tasarımlarını çalarak kendi fabrikalarında seri üretim olarak basmak istemiştir. Kendisine gala saatinde alibi oluşturmak için, kendi ölçülerine göre dikilmiş özel tasarım takım elbiseyi boy ve fizik olarak kendisine benzeyen şoförüne giydirip davete göndermiştir. Kendisi ise şoförünün sıradan hazır giyim ucuz ceketini giyerek atölyeye sızmış ve cinayeti işlemiştir. Ancak kaçarken kırık masanın köşesine takılan hazır giyim ceketten lifler kalmıştır. Bu pot yapan, standart beden ceket Galip'in üzerine tam oturmamış ve gerçeği ortaya çıkarmıştır."
     },
     {
       "id": "suspect_canan",
-      "name": "Canan Kopya",
-      "role": "Sanat Galerisi Yöneticisi",
+      "name": "Canan Taklit",
+      "role": "Tasarım Asistanı",
       "portrait": "/assets/levels/level4/suspect_canan.png",
-      "statement": "Ben bütün akşam zemin kattaki galeride sergiye hazırlık yapıyordum. Mimar Selim Bey birkaç kez yanıma uğrayıp kolonların arkasındaki duvarları inceledi. Tabloların orijinal olup olmadığını sordu. Ben de ona sergilenenlerin replika olduğunu, orijinallerin depoda saklandığını söyledim.",
-      "alibi": "Sergi salonundaki güvenlik kameraları ve açılış hazırlığı yapan temizlik personeli onun 22:00-22:30 arasında galeride tablo düzenlediğini doğrulamaktadır.",
-      "motive": "Mimar Selim'in galerideki tablolara yakından bakıp onların replika olduğunu fark etmesi sonucu şüphe çekmiş, ancak replikaların güvenlik amaçlı sergilendiği ve yasal olduğu anlaşılmıştır.",
+      "statement": "Ben bütün akşam zemin kattaki sergi alanında mankenleri hazırlıyordum. Selim Bey'in yanına birkaç kez uğrayıp kumaşları teslim ettim. Orijinal çizimleri kopyalamak benim isim değil, ben sadece bana söyleneni çizerim.",
+      "alibi": "Atölyedeki diğer çalışanlar ve güvenlik kameraları Canan'ın akşam boyunca sergi alanında manken giydirdiğini doğrulamaktadır.",
+      "motive": "Kendi özgün çizimleri olmadığı için sürekli Selim Kaya'yı taklit etmekle suçlanması ve onun gölgesinden kurtulmak istemesi.",
       "is_guilty": false,
       "guilty_reason": ""
     },
     {
       "id": "suspect_yasin",
       "name": "Yasin Papağan",
-      "role": "Halkla İlişkiler Müdürü",
+      "role": "Marka PR Müdürü",
       "portrait": "/assets/levels/level4/suspect_yasin.png",
-      "statement": "Seri Kule'nin tanıtımı için basına verilecek demeçleri hazırlıyordum. Selim Bey ile teknik konular hakkında hiç konuşmadım. Olay saatinde ofisimde basına dağıtılacak bülteni hazırlıyordum, her şeyi yönetim kurulunun bana dikte ettiği gibi yazdım.",
-      "alibi": "Ofis bilgisayarındaki log kayıtları ve güvenlik kameraları, onun olay saatinde odasında olduğunu ve bülten hazırladığını kesinleştirmektedir.",
-      "motive": "Yönetimden gelen her talimatı ve basın açıklamasını sorgulamadan kopyalayıp yayımlayan biri olması, ancak olay yeriyle veya cinayetle hiçbir fiziksel bağı olmaması.",
+      "statement": "Moda evinin yeni sezon PR bültenini hazırlıyordum. Selim Bey ile teknik konular hakkında hiç konuşmadım. Olay saatinde ofisimde basına dağıtılacak metni yönetim kurulunun bana dikte ettiği şekilde yazıyordum.",
+      "alibi": "Ofis bilgisayarındaki log kayıtları ve güvenlik kameraları, onun olay saatinde odasında olduğunu ve bülten yazdığını kesinleştirmektedir.",
+      "motive": "Yönetimden gelen her açıklamayı sorgulamadan kopyalayıp yayımlayan biri olması, ancak olay yeriyle veya cinayetle hiçbir fiziksel bağı olmaması.",
       "is_guilty": false,
       "guilty_reason": ""
     }
   ],
   "solution": {
     "culprit": "Galip Seri",
-    "crime_time": "Beton Karot Numunesi -> Hazır Giyim Ceket Lifleri -> Karot Test Cihazı Logu",
-    "question": "Fiziksel kanıtlar ve alibiler değerlendirildiğinde, Mimar Selim'i bodrum katındaki laboratuvarda öldüren ve statik raporunu yok etmeye çalışan katil kimdir?",
+    "crime_time": "Özel Dikim Kumaş Numunesi -> Pot Yapan Ceket Astarı -> Çilingir Maymuncuğu",
+    "question": "Fiziksel kanıtlar ve alibiler değerlendirildiğinde, Selim Kaya'yı tasarım atölyesinde öldüren ve özgün çizimleri çalmaya çalışan katil kimdir?",
     "options": [
-      "Galip Seri (Proje Müteahhidi)",
-      "Canan Kopya (Sanat Galerisi Yöneticisi)",
-      "Yasin Papağan (Halkla İlişkiler Müdürü)"
+      "Galip Seri (Hazır Giyim Baronu)",
+      "Canan Taklit (Tasarım Asistanı)",
+      "Yasin Papağan (Marka PR Müdürü)"
     ],
-    "answer": "Galip Seri (Proje Müteahhidi)",
-    "proof": "Laboratuvardaki kırık beton pürüzlerinde bulunan ucuz konfeksiyon lifleri, katilin hazır giyim bir ceket giydiğini kanıtlar. Galip Seri, gala için şoförüne kendi özel terzi dikimi takımını giydirerek sahte alibi oluşturmuş, kendisi ise bu konfeksiyon ceketle cinayeti işlemiştir. Karot test makinesinin durdurulma saati (22:15) cinayet anını doğrular. Galip, 'her bedene uyan' hazır giyim (konfeksiyon) bir yalanı giyinerek kendini gizlemeye çalışmıştır. Tıpkı sorgulanmamış inançları taklit eden bir zihnin, dışarıdan mükemmel görünen ama ilk krizde yıkılan prefabrik yapılar kurması gibi. Ancak gerçeğe ulaşmak için yapılan zemin etüdü ve karot testi (tahkik), süslü vitrinlerin altındaki çürük betonları elbet açığa çıkarır. Hakikat, elenen kumların altındaki saf altın gibi, sorgulandıkça daha çok parıldar."
+    "answer": "Galip Seri (Hazır Giyim Baronu)",
+    "proof": "Olay yerindeki kumaş pürüzlerinde bulunan ucuz konfeksiyon lifleri ve pot ceket astarı, katilin hazır giyim bir ceket giydiğini kanıtlar. Galip Seri, gala için şoförüne kendi özel terzi dikimi takımını giydirerek sahte alibi oluşturmuş, kendisi ise bu konfeksiyon ceketle cinayeti işlemiştir. Çilingir maymuncuğuyla kasayı açıp çizimleri çalmıştır. Galip, 'her bedene uyan' hazır giyim (konfeksiyon) bir yalanı giyinerek kendini gizlemeye çalışmıştır. Tıpkı sorgulanmamış inançları taklit eden bir zihnin, dışarıdan mükemmel görünen ama ilk krizde yıkılan prefabrik yapılar kurması gibi. Ancak gerçeğe ulaşmak için yapılan zemin etüdü ve karot testi (tahkik), süslü vitrinlerin altındaki çürük betonları elbet açığa çıkarır. Hakikat, elenen kumların altındaki saf altın gibi, sorgulandıkça daha çok parıldar."
   }
 }
