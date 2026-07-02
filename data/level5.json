@@ -1,123 +1,100 @@
 {
   "level_id": 5,
-  "concept": "Algı",
-  "concept_en": "Perception",
-  "category": "Temel Felsefe",
+  "concept": "Değerler Sistemi ve Omurga",
+  "concept_en": "System of Values & Integrity",
+  "category": "Zihinsel Format",
   "background_image": "/assets/levels/level5/bg.png",
-  "intro_wisdom": "Algı, dış dünyadan alınan duyusal verilerin zihinde anlamlandırılma sürecidir. Ancak zihin, eksik veya hatalı verileri her zaman kendi beklentilerine ve deneyimlerine göre 'düzeltme' ve tamamlama eğilimindedir. Kusursuz bir taklitçi bile, kendi beyninin algısal filtrelerine yenik düşer ve bu durum onu ele verir.",
+  "intro_wisdom": "Fikirler ara duvarlar gibidir, yıkılıp yeniden yapılabilir; ancak değerler taşıyıcı kolonlardır, bir kez kesilirse tüm hayat başınıza yıkılır.",
   "outro_wisdom": {
     "lies": [
-      "YALAN: Algı bize gerçeği olduğu gibi gösterir, beyin asla duyusal verileri değiştirmez.",
-      "YALAN: Kusursuz bir kopya, orijinalden ayırt edilemez; çünkü kopyacı kendi algısal filtrelerinden etkilenmez.",
-      "YALAN: Bir kişinin kıyafeti ve üniforması, onun gerçek kimliğinin güvenilir kanıtıdır."
+      "Yanılgı: Koşullara göre ahlaki değerleri esnetmek, hayatta kalmanın ve başarının anahtarıdır.",
+      "Yanılgı: Hataları ve yapısal çürükleri dış makyajla gizlemek, onları tamamen yok eder.",
+      "Yanılgı: Başkalarının gözündeki imajı (dış cephe) korumak, iç mukavemetten (karakterden) daha önemlidir."
     ],
     "truths": [
-      "GERÇEK: İnsan beyni, gördüğü çelişkileri otomatik olarak düzeltme eğilimindedir ve bu Gestalt algısı bir taklitçiyi ele verebilir.",
-      "GERÇEK: Algısal filtreler, kusursuz bir kopyacının bile farkında olmadan orijinaldeki kasıtlı hataları düzeltmesine neden olur.",
-      "GERÇEK: Otorite etkisi ve kıyafet algısı, insanların kimlik doğrulamasını atlayarak güvenlik açıkları yaratabilir."
+      "Hakikat: Değerler, baskı ve kriz anlarında bedel ödemeyi göze alarak korunan taşıyıcı kolonlardır.",
+      "Hakikat: Dürüstlük ve tutarlılık, tıpkı statik demir donatı gibi, karakteri fırtınalarda ayakta tutar.",
+      "Hakikat: İç yapısı (omurgası) çürük olan bir karakter, dış görünüşü ne kadar süslü olursa olsun ilk sarsıntıda çöker."
     ]
   },
-  "intro_text": "Tarihi Şehir Kütüphanesi'nin Nadir Eserler Arşivi'ne adımınızı attığınızda, ağır bir eski kağıt ve arı mumu kokusu alıyorsunuz. Baş Arşivci Asım Algın, çayına katılan gecikmeli etkili bir nörotoksin yüzünden masasında yığılmış halde bulunuyor. En büyük hazine olan 500 yıllık paha biçilmez el yazması çalınmış ve yerine kusursuz bir sahtesi bırakılmış. Gerçek hırsızı bulmak için mürekkep izlerinin ve mum alevinin ötesini, bizzat insan zihninin algı yanılmalarını okumak gerekecekti.",
+  "intro_text": "Gökova Körfezi'nin kuytu bir limanındaki tarihi 'Nuh'un Tersanesi'nden gelen acı bir haberle sarsıldık. Klasik ahşap yat restorasyonunun efsanevi ismi Usta Gemi Mimarı Orhan Yalın, restorasyonunu yürüttüğü asırlık 'Ege Rüzgarı' yatının gövdesi altında can vermiş halde bulundu. İlk incelemelerde, yatı askıda tutan yan desteklerden birinin (payanda) devrildiği ve kazaya sebep olduğu rapor edildi. Ancak atölyeyi incelediğimde, payandayı tutan çelik saplamaların kesilmiş olduğunu fark ettim. Orhan Usta, geminin omurgasındaki (keel) hayati bir sırrı açığa çıkarmak üzereydi ve birileri onun bu dürüstlüğünün bedelini ödetmişti. Katili bulmak için tersanedeki üç şüpheliyi ve statik dengeleri bozulan bu cinayeti çözmemiz gerekiyor.",
   "clues": [
     {
       "id": "clue_1",
-      "title": "Sahte El Yazmasındaki Algı Hatası",
-      "description": "Vitrindeki sahte el yazması kusursuz görünüyor. Ancak orijinal tarihi eserin 14. sayfasında meşhur bir 'kasıtlı yazım hatası' vardır (Kelimenin harfleri terstir). Sahtekar, metni kopyalarken beyninin otomatik okuma ve düzeltme (Gestalt) algısına yenik düşmüş, o meşhur kelimeyi günümüz Türkçesine uygun, tamamen hatasız yazmıştır! Bu algısal düzeltme, eserin sahte olduğunu ve kopyalayanın kendi beyninin tuzağına düştüğünü kanıtlar.",
-      "image": "/assets/levels/level5/clue1.png",
+      "title": "Kesik Çelik Payanda",
+      "description": "Yatın statik dengesini sağlayan ana çelik yan desteğin (payanda) zemin kilidi pürüzsüzce kesilmiş. Bu bir kaza değil; yatın ağırlık merkezinin bilerek kaydırıldığını ve taşıyıcı desteğin kasıtlı olarak sabote edildiğini gösteriyor.",
+      "image": "/assets/levels/level5/clue_1.png",
       "is_natural_clock": false,
-      "time_value": null
+      "time_value": "1. Adım: Katil, Orhan Usta'nın gece geç saatte teknenin altına girip omurgayı inceleyeceğini biliyordu."
     },
     {
       "id": "clue_2",
-      "title": "Arı Mumu Erime Seviyesi",
-      "description": "Nadir eserler odasında ortam nemini korumak için elektrik yerine sadece özel saf arı mumu mumlar kullanılır. Masadaki mumun fiziksel erime seviyesi, fitilin tam 16:00'da yakıldığını ve o zamandan beri kesintisiz yandığını göstermektedir. Bu saat kurbanın odaya kilitlendiği saattir.",
-      "image": "/assets/levels/level5/clue2.png",
-      "is_natural_clock": true,
-      "time_value": "16:00"
+      "title": "Çürük Omurga ve Epoksi Makyajı",
+      "description": "Yatın en kritik taşıyıcı parçası olan ahşap omurgasının içten çürüdüğü, ancak dışının kaliteli epoksi reçine ve fiberglas makyajla kaplanarak tamamen sağlam gösterildiği anlaşıldı. Orhan Usta bu çürüğü tespit edip rapor hazırlamaya başlamıştı.",
+      "image": "/assets/levels/level5/clue_2.png",
+      "is_natural_clock": false,
+      "time_value": "2. Adım: Bu çürüğün rapor edilmesi, yatın sahibine milyonlarca liralık tazminat yükü getirecek ve satışı iptal edecekti."
     },
     {
       "id": "clue_3",
-      "title": "Kütüphane Çan Kulesi Gölgesi",
-      "description": "Batmakta olan güneşin, dışarıdaki dev çan kulesinin gölgesini kütüphanenin bahçesindeki güneş saati figürünün tam 18:00 çizgisine düşürmesi, şu anki gerçek yerel saatin tam 18:00 olduğunu kanıtlar.",
-      "image": "/assets/levels/level5/clue3.png",
-      "is_natural_clock": true,
-      "time_value": "18:00"
+      "title": "Tehdit Notu ve Değer Testi",
+      "description": "Orhan Usta'nın masasında bulunan bir not: 'Ege Rüzgarı'nın omurga raporunu temiz yaz, tersane hisselerini iki katına çıkaralım. Ara duvarları değiştirebilirsin ama omurgaya dokunma!' Orhan Usta ise arkasına 'Omurga çürükse gemi batar, ben bu rapora imza atmam' yazmıştı.",
+      "image": "/assets/levels/level5/clue_3.png",
+      "is_natural_clock": false,
+      "time_value": "3. Adım: Orhan Yalın, geçici menfaatler (tersane hissesi) uğruna taşıyıcı kolonundan (dürüstlük değerinden) taviz vermeyi reddetti."
     },
     {
       "id": "clue_4",
-      "title": "Orijinal Eserin Mikro-Katalog Görüntüsü",
-      "description": "Orijinal kitabın dijital mikrofilm arşiv görüntüsü. 14. sayfadaki meşhur kelimenin harflerinin bilerek ters yazıldığı çok net bir şekilde görülmektedir.",
-      "image": "/assets/levels/level5/clue4.png",
+      "title": "Atölye Giriş Kartı Kayıtları",
+      "description": "Cinayet gecesi atölyeye giriş yapanların dijital kart kayıtları. Güvenlik sisteminin saat ayarı bozuk olduğu için giriş sıralaması belirsiz görünüyor. Masum Açıklama: Güvenlik görevlisi kartların sadece vardiya değişiminde basıldığını iddia ediyor.",
+      "image": "/assets/levels/level5/clue_4.png",
       "is_natural_clock": false,
-      "time_value": null
-    },
-    {
-      "id": "clue_5",
-      "title": "Çeldirici Kanıt: Gümüş Ayraç",
-      "description": "Vitrin camının dibinde, Koleksiyoner Selin'e ait özel işlemeli gümüş bir kitap ayracı bulunmuştur. Bu ayraç, hırsız tarafından kasıtlı olarak oraya bırakılmıştır.",
-      "image": "/assets/levels/level5/clue5.png",
-      "is_natural_clock": false,
-      "is_red_herring": true,
-      "time_value": null
+      "is_red_herring": true
     }
   ],
   "suspects": [
     {
       "id": "suspect_1",
-      "name": "Mert Kopya",
-      "role": "Usta Sahtekar ve Kaligraf",
-      "motive": "Karaborsada milyonlarca dolar edecek orijinal kitabı satıp, sahtesiyle durumu aylarca gizleme planı.",
-      "portrait": "/assets/levels/level5/suspect1.png",
-      "statement": "Ben saat 16:00 ile 17:00 arasında kütüphanenin restorasyon atölyesinde tek başıma çalışıyordum. Yukarıdaki nadir eserler odasına hiç çıkmadım.",
-      "alibi": "Mert'in 16:00 - 17:00 arasında atölyede tek başına olduğuna dair alibisi zayıftır. Üstelik el yazmasını kopyalarken insan beyninin optik yanılsamaları düzeltme (Gestalt) algısına yenik düşmüş ve orijinal eserdeki ters kelime hatasını farkında olmadan düzeltmiştir. Ayrıca kütüphane müfettişi kıyafeti giyerek güvenlik görevlisinin algısını manipüle etmiştir.",
-      "is_guilty": true,
-      "guilty_reason": "Mert, kitabı kopyalarken beyninin Gestalt algısına yenik düşerek orijinaldeki kasıtlı hatayı otomatik olarak doğru yazmıştır. Bu sahtekarın kendisi olduğunu kanıtlar. 16:00'da kurbanın çayına zehri koymuş, müfettiş kıyafetiyle otorite algısı yaratarak odaya girmiş ve kitabı değiştirmiştir. Selin'in ayracını olay yerine atarak suçu ona yıkmaya çalışmıştır."
+      "name": "Kadir Güverte",
+      "role": "Baş Marangoz",
+      "portrait": "/assets/levels/level5/suspect_kadir.png",
+      "statement": "Orhan Usta ile 20 yıldır çalışırım. O yatın omurgasındaki çürüğü ben de fark etmiştim ama Orhan Usta rapor edeceğini söyleyince sustum. Akşam atölyeden erken çıktım, eşimle evdeydim.",
+      "alibi": "Eşi o saatte Kadir'in evde olduğunu doğruluyor ancak Kadir'in kıyafetlerinde taze epoksi lekesi bulundu.",
+      "motive": "Orhan Usta'nın dürüstlük prensiplerine her zaman saygı duyuyordu ancak tersanenin mali krize girmesinden korkuyordu.",
+      "is_guilty": false
     },
     {
       "id": "suspect_2",
-      "name": "Selin Sanat",
-      "role": "Zengin Koleksiyoner",
-      "motive": "Nadir esere sahip olma konusundaki hastalıklı takıntısı, ne pahasına olursa olsun onu istemesi.",
-      "portrait": "/assets/levels/level5/suspect2.png",
-      "statement": "Kitabı istiyordum evet ama hırsız değilim. Ben saat 16:00 - 17:00 arasında belediye binasında tapu işlemlerindeydim. İmzam ve kameralar var.",
-      "alibi": "Belediye binası güvenlik kameraları Selin'in saat 15:50 ile 17:15 arasında binadan hiç çıkmadığını kesin olarak kanıtlamaktadır.",
-      "is_guilty": false,
-      "guilty_reason": null
+      "name": "Selim Poyraz",
+      "role": "Yat Brokerı ve Ortak",
+      "portrait": "/assets/levels/level5/suspect_selim.png",
+      "statement": "Ege Rüzgarı'nı yabancı bir milyardere satmak üzereydik. Orhan Usta'nın takıntıları yüzünden satış iptal olmak üzereydi. Ama ben katil değilim, o gece otelde müşteriyle akşam yemeğindeydim.",
+      "alibi": "Otel kameraları Selim'in gece 23:00'e kadar yemekte olduğunu gösteriyor, cinayet ise gece 01:00 sularında işlendi. Otelden ayrılış saati şüpheli.",
+      "motive": "Satıştan alacağı devasa komisyon ve tersanenin geleceği, Orhan Usta'nın raporuyla tehlikeye girmişti.",
+      "is_guilty": false
     },
     {
       "id": "suspect_3",
-      "name": "Hakan Koruma",
-      "role": "Kütüphane Güvenlik Görevlisi",
-      "motive": "Gizli kumar borçları yüzünden hırsızlara içeriden yardım ettiği şüphesi.",
-      "portrait": "/assets/levels/level5/suspect3.png",
-      "statement": "Ben saat 16:00 ile 17:00 arasında nöbetteydim. Sadece genel müdürlükten geldiğini söyleyen resmi giyimli bir müfettiş girdi, kartını gösterince içeri aldım.",
-      "alibi": "Hakan, üniforma ve otorite algısına yenik düşmüş, gelen müfettişin aslında kılık değiştirmiş Mert olduğunu fark etmemiştir. Suç ortağı değildir, sadece algısı manipüle edilmiştir.",
-      "is_guilty": false,
-      "guilty_reason": null
-    },
-    {
-      "id": "suspect_4",
-      "name": "Arzu Alıcı",
-      "role": "Borçlu Akademisyen",
-      "motive": "Tez araştırması için kitaba ihtiyacı var, fakat aynı zamanda tefecilere olan borcunu kapatmak için eseri satmak istiyor.",
-      "portrait": "/assets/levels/level5/suspect4.png",
-      "statement": "Saat 15:30'da kütüphaneden ayrıldım. Kafeteryadaki fişim ve kredi kartı ekstrem 16:00'da iki sokak ötede olduğumu gösteriyor.",
-      "alibi": "Kredi kartı slipleri ve kafe logları, Arzu'nun suç anı olan 16:00'da olay yerinden uzakta olduğunu onaylar.",
-      "is_guilty": false,
-      "guilty_reason": null
+      "name": "Yavuz Epoksi",
+      "role": "Restorasyon Teknikeri",
+      "portrait": "/assets/levels/level5/suspect_yavuz.png",
+      "statement": "Ben sadece verilen işi yaparım. Yatın altındaki omurgayı epoksi ve fiberglasla kaplamamı bizzat Selim Bey istedi, ben de uyguladım. Statik dengelerden anlamam. O gece geç saatte malzeme deposundaydım.",
+      "alibi": "Gece 01:00'de depoda olduğunu söyleyen Yavuz'un dolabında çelik kesmekte kullanılan taşlama makinesi ve aşınmış diskler bulundu.",
+      "motive": "Yatın omurgasını makyajlayarak çürüğü gizleyen kişiydi. Orhan Usta'nın bunu fark edip sahtekarlığı polise bildireceğini ve lisansının iptal edileceğini biliyordu.",
+      "is_guilty": true,
+      "guilty_reason": "Yavuz, yatın omurgasındaki çürüğü kapatmak için sahte makyaj (epoksi) uygulayan kişidir. Orhan Usta'nın dürüstlük raporuyla sahtekarlığının ortaya çıkacağını ve mesleki olarak biteceğini anladığında, tersanenin statik dengelerini sabote etmiştir. Çelik payandayı kesmek için kullandığı taşlama aleti dolabında bulunmuştur."
     }
   ],
   "solution": {
-    "culprit": "Mert Kopya",
-    "crime_time": "16:00",
-    "question": "Sahte kitaptaki algısal hatayı fark ederek hırsızı tespit edin. Kitabı kim çaldı?",
+    "culprit": "Yavuz Epoksi",
+    "crime_time": "clue_1 -> clue_2 -> clue_3",
+    "question": "Ege Rüzgarı yatının taşıyıcı omurgasındaki sahtekarlığı gizlemek için Orhan Usta'nın dürüstlük kolonunu yıkmaya çalışan ve statik desteği sabote eden katil kimdir?",
     "options": [
-      "Selin Sanat - Koleksiyonuna katmak için kitabı çaldı ve ayracını unuttu",
-      "Mert Kopya - Kitabı kopyalarken Gestalt algısına yenik düşerek orijinaldeki kasıtlı hatayı düzeltti",
-      "Hakan Koruma - Güvenlik görevlisi olarak kitaba erişimi vardı ve sahte müfettiş hikayesi uydurdu",
-      "Arzu Alıcı - Tefecilere olan borcunu ödemek için kitabı çaldı"
+      "Kadir Güverte (Baş Marangoz)",
+      "Selim Poyraz (Yat Brokerı ve Ortak)",
+      "Yavuz Epoksi (Restorasyon Teknikeri)"
     ],
-    "answer": "Mert Kopya - Kitabı kopyalarken Gestalt algısına yenik düşerek orijinaldeki kasıtlı hatayı düzeltti",
-    "proof": "Çözümün anahtarı algısal bir hatadadır. Orijinal eserde meşhur bir 'kasıtlı yazım hatası' vardır (kelime terstir). Ancak sahte eserde bu kelime tamamen doğru yazılmıştır. Bu, taklitçinin beynindeki Gestalt algısının devreye girdiğini ve kopyalama yaparken orijinaldeki hatayı otomatik okuma güdüsüyle farkında olmadan düzelttiğini kanıtlar. Arı mumunun erime logu hırsızlığın 16:00'da yapıldığını gösterir. Mert Kopya, restorasyon atölyesinde tek başına olduğunu iddia etse de alibisi doğrulanamamaktadır. Güvenlik görevlisi Hakan'ın içeri aldığı 'müfettiş' aslında müfettiş kıyafeti giyerek otorite algısını manipüle eden Mert'tir. Selin'in gümüş ayracı ise Mert tarafından kasıtlı olarak bırakılmış bir çeldiricidir; Selin'in alibisi kameralarla sabittir."
+    "answer": "Yavuz Epoksi (Restorasyon Teknikeri)",
+    "proof": "Yavuz Epoksi, yatın ana taşıyıcısı olan omurgadaki yapısal çürüğü kimyasal makyajla gizlemiş, dürüstlük ilkesinden taviz vermeyen Orhan Usta'nın bunu rapor edeceğini anlayınca da statik payandayı sabote ederek cinayeti işlemiştir. Bu vaka, tıpkı statik mühendisliğinde olduğu gibi, değerlerinden taviz vermeyen dürüst insanların (taşıyıcı kolonların) yok edilmeye çalışılmasını anlatır. Karakter, dışarıdan ne kadar parlak ve süslü (epoksi makyajlı) görünürse görünsün, temel değerleri ve ahlaki omurgası çürükse fıntınaya dayanamaz. Menfaat için omurgayı feda edenler eninde sonunda çökmeye mahkumdur."
   }
 }
