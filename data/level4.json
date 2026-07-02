@@ -76,9 +76,9 @@
       "portrait": "/assets/levels/level4/suspect_galip.png",
       "statement": "Olay gecesi 22:00-23:00 saatleri arasında yan binadaki lüks restoranda düzenlenen açılış galasındaydım. Kameralar ve gazeteciler beni orada çekti. Üzerimdeki bu özel tasarım terzi dikimi takım elbiseyle boy gösterdim. Selim'in atölyesiyle işim olmaz.",
       "alibi": "Galip, gala saatinde davette olduğunu basına servis edilen fotoğraflarla kanıtlamaya çalışmaktadır. Ancak fotoğraflardaki takım elbisenin omuzlarında potluklar ve pot kesimler mevcuttur. Oysa Galip'in takım elbisesi terzi dikimidir.",
-      "motive": "Selim Kaya'nın özgün tasarımlarını çalarak kendi fabrikalarında ucuz konfeksiyon ürünü olarak basmak ve taklitçilik davasını engellemek.",
+      "motive": "Selim Kaya'nın taklitçilik davası açmaya hazırlandığını ve tasarımlarının çalındığını ortaya çıkaracağını bilmesi.",
       "is_guilty": true,
-      "guilty_reason": "Galip Seri, Selim'in özgün tasarımlarını çalarak kendi fabrikalarında seri üretim olarak basmak istemiştir. Kendisine gala saatinde alibi oluşturmak için, kendi ölçülerine göre dikilmiş özel tasarım takım elbiseyi boy ve fizik olarak kendisine benzeyen şoförüne giydirip davete göndermiştir. Kendisi ise şoförünün sıradan hazır giyim ucuz ceketini giyerek atölyeye sızmış ve cinayeti işlemiştir. Ancak kaçarken kırık masanın köşesine takılan hazır giyim ceketten lifler kalmıştır. Bu pot yapan, standart beden ceket Galip'in üzerine tam oturmamış ve gerçeği ortaya çıkarmıştır."
+      "guilty_reason": "Galip Seri, Selim'in özgün çizimlerini çalarak kendi fabrikalarında seri üretime sokmak ve taklitçilik davasını engellemek amacıyla atölyede Selim Kaya'yı öldürmüştür. Kendisine gala saatinde alibi oluşturmak için, kendi ölçülerine göre dikilmiş özel tasarım takım elbiseyi boy ve fizik olarak kendisine benzeyen şoförüne giydirip davete göndermiştir. Kendisi ise şoförünün sıradan hazır giyim ucuz ceketini giyerek atölyeye sızmış ve cinayeti işlemiştir. Ancak kaçarken kırık masanın köşesine takılan hazır giyim ceketten lifler kalmıştır. Bu pot yapan, standart beden ceket Galip'in üzerine tam oturmamış ve gerçeği ortaya çıkarmıştır."
     },
     {
       "id": "suspect_canan",
@@ -113,6 +113,6 @@
       "Yasin Papağan (Marka PR Müdürü)"
     ],
     "answer": "Galip Seri (Hazır Giyim Baronu)",
-    "proof": "Olay yerindeki kumaş pürüzlerinde bulunan ucuz konfeksiyon lifleri ve pot ceket astarı, katilin hazır giyim bir ceket giydiğini kanıtlar. Galip Seri, gala için şoförüne kendi özel terzi dikimi takımını giydirerek sahte alibi oluşturmuş, kendisi ise bu konfeksiyon ceketle cinayeti işlemiştir. Çilingir maymuncuğuyla kasayı açıp çizimleri çalmıştır. Galip, 'her bedene uyan' hazır giyim (konfeksiyon) bir yalanı giyinerek kendini gizlemeye çalışmıştır. Tıpkı sorgulanmamış inançları taklit eden bir zihnin, dışarıdan mükemmel görünen ama ilk krizde yıkılan prefabrik yapılar kurması gibi. Ancak gerçeğe ulaşmak için yapılan zemin etüdü ve karot testi (tahkik), süslü vitrinlerin altındaki çürük betonları elbet açığa çıkarır. Hakikat, elenen kumların altındaki saf altın gibi, sorgulandıkça daha çok parıldar."
+    "proof": "Galip Seri, gala için şoförüne kendi özel terzi dikimi takımını giydirerek sahte alibi oluşturmuş, kendisi ise ucuz konfeksiyon ceketle cinayeti işlemiştir. Pot yapan, standart beden ceket Galip'in üzerine tam oturmamış ve gerçeği ortaya çıkarmıştır. Galip, 'her bedene uyan' hazır giyim (konfeksiyon) bir yalanı giyinerek kendini gizlemeye çalışmıştır. Tıpkı sorgulanmamış hazır fikirleri taklit eden bir zihnin, üzerine tam oturmayan emanet elbiselerle yaşaması gibi. Ancak gerçeğe ulaşmak için yapılan sorgulama ve tahkik, süslü vitrinlerin altındaki sahteliği elbet açığa çıkarır. Hakikat, kendi akıl süzgecimizden geçirdiğimiz terzi işi özgün değerlerde saklıdır."
   }
 }
