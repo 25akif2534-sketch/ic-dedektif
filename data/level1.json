@@ -92,7 +92,7 @@
     {
       "id": "suspect_3",
       "name": "Aslan Bey'in Zihni (Panik & İnkâr)",
-      "role": "Gerçek Katil (Zihinsel Süreç)",
+      "role": "Zihinsel Süreç",
       "portrait": "/assets/levels/level1/suspect_zihin.png",
       "statement": "Vücudunun verdiği kalp krizi sinyalini (arıza ışığı) ilaçlarla uyuşturup yok saydı. Göğüs ağrısı şiddetlenince panikledi, rakibinin ihtarnamesini suikast emri sandı ve aynadaki kendi yansımasıyla boğuşarak krizini tetikledi.",
       "alibi": "Yok. Tüm arbede kilitli odanın içinde maktulün kendi zihinsel yanılsamalarıyla gerçekleşmiştir.",

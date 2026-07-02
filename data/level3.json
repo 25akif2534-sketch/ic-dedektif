@@ -72,7 +72,7 @@
     {
       "id": "suspect_1",
       "name": "Satıcı Ferhat",
-      "role": "Kapıyı Çalan Satıcı Temsilcisi",
+      "role": "Sigorta Satıcısı",
       "portrait": "/assets/levels/level3/suspect_ferhat.png",
       "statement": "Evet, Nermin Teyze'nin kapısını birkaç kez çaldım ama o hiç açmadı. Broşürleri kapının altından attım ve gittim. Israr ettim ama hiçbir zaman içeri giremedim. Kadın bana kapıyı bile aralamadı.",
       "alibi": "Olay gecesi saat 20:00'den itibaren şirketin bölge toplantısındaydı. Toplantı tutanakları, diğer satıcıların ifadeleri ve otel giriş kaydıyla doğrulandı. Eve dışarıdan giriş izi de yoktur.",
@@ -82,7 +82,7 @@
     {
       "id": "suspect_2",
       "name": "Komşu Saliha",
-      "role": "Gürültücü Komşu Temsilcisi",
+      "role": "Yan Komşu",
       "portrait": "/assets/levels/level3/suspect_saliha.png",
       "statement": "Nermin'le aramız bozuktu, evet. Gece yarısı televizyonunu açık bırakır, beni uyutmazdı. Kızgın bir mektup yazdım ama bu kadar! O gece ben evimdeydim, kızım ve damadım da yanımdaydı. Kimseyi zehirlemeye kalkacak kadar deli değilim.",
       "alibi": "Olay gecesi evinde kızı ve damadıyla birlikte akşam yemeği yemiş, üçü birlikte film izlemiştir. Kızı ve damadı bunu ayrı ayrı doğrulamıştır. Ayrıca Nermin Hanım'ın evinin anahtarına sahip değildir.",
@@ -92,9 +92,9 @@
     {
       "id": "suspect_3",
       "name": "Yeğen Burcu",
-      "role": "Gerçek Katil (İçeri Alınan Toksik Misafir)",
+      "role": "Yakın Akraba",
       "portrait": "/assets/levels/level3/suspect_burcu.png",
-      "statement": "Teyzem beni çok severdi, ben de onu. Ona her hafta çay yapardım, ilaçlarını düzenlerdim. O gece de uğradım, çayını hazırlayıp bıraktım ve çıktım. Sabah bu haberi duyunca yıkıldım. Onu kim zehirler ki?",
+      "statement": "Teyzeme haftada bir uğrar, ev işlerinde yardım ederdim. O akşam da kısa bir ziyaret yaptım. Biraz sohbet ettik, mutfakta oturup dertleştik. Her zamanki gibi huzurluydu. Ben çıktığımda kapıyı kilitledi, her şey normaldi.",
       "alibi": "Yok. Evin yedek anahtarına sahip olduğunu ve o gece 'kısa bir ziyaret' yaptığını itiraf etmiştir. Ancak kameranın son kaydı tam da Burcu'nun anahtarla girişini göstermekte ve ardından kayıt kesilmektedir.",
       "motive": "Teyzesinin mirasını ele geçirmek için vasiyetnameyi kendi lehine değiştirtmek ve ardından teyzesini zehirlemek. Güvenilip kapısı açılan, eve serbestçe giren ve alışkanlıkları bilen tek kişidir.",
       "is_guilty": true,
@@ -106,11 +106,11 @@
     "crime_time": "Miras Değişiklik Taslağı -> Bitki Çayındaki Zehir Kalıntısı -> Kasıtlı Kapatılan Güvenlik Kamerası",
     "question": "Fiziksel kanıtlar ve masum açıklamalar değerlendirildiğinde; kilitlenmemiş kapıdan içeri giren, farkındalık mekanizmasını devre dışı bırakan ve Nermin Hanım'ı zehirleyen gerçek katil kimdir?",
     "options": [
-      "Satıcı Ferhat (Kapıyı Çalan Satıcı)",
-      "Komşu Saliha (Gürültücü Komşu)",
-      "Yeğen Burcu (İçeri Alınan Toksik Misafir)"
+      "Satıcı Ferhat (Sigorta Satıcısı)",
+      "Komşu Saliha (Yan Komşu)",
+      "Yeğen Burcu (Yakın Akraba)"
     ],
-    "answer": "Yeğen Burcu (İçeri Alınan Toksik Misafir)",
+    "answer": "Yeğen Burcu (Yakın Akraba)",
     "proof": "Dışarıdaki tüm çeldiricilerin masum açıklamaları (satıcının standart broşürleri, komşunun gürültü şikayeti mektubu, belediye sayaç görevlisinin ayak izleri) eve dışarıdan bir saldırgan girdiği tezini çürütür. Kilit kırılmamış, pencere açılmamıştır — katil kapıyı anahtarla açmıştır. Güvenlik kamerasının son kaydı Burcu'nun anahtarla girişini gösterir ve ardından kamera içeriden kasıtlı olarak kapatılmıştır (farkındalığın yok edilmesi). Mutfaktaki zehir, Nermin Hanım'ın kişisel kupasına karıştırılmıştır — bunu yapabilecek kişi alışkanlıklarını bilen ve mutfağa serbestçe erişen biridir. Miras taslağındaki Burcu'nun el yazısı motivasyonu kanıtlar. Tehlike kapıyı çalan yabancıdan değil, güvenilip içeri alınan ve 'kimlik sorulmayan' tanıdıktan gelmiştir."
   }
 }
