@@ -1,123 +1,118 @@
 {
   "level_id": 4,
-  "concept": "Mantık",
-  "concept_en": "Logic",
-  "category": "Temel Felsefe",
+  "concept": "Sorgulama ve Tahkik",
+  "concept_en": "Investigation & Verification",
+  "category": "Zihinsel Format",
   "background_image": "/assets/levels/level4/bg.png",
-  "intro_wisdom": "Mantık, doğru yolu gösteren bir pusuladır; ancak pusulanın kuzeyi yanlış ayarlandıysa her adım sizi uçuruma yaklaştırır. Katilin en kusursuz mantık safsatası, farklı iki odada aynı anda var olabileceğini iddia eden dijital bir yanılsamadan ibarettir.",
+  "intro_wisdom": "Kiralık fikirlerle zihinsel mülk sahibi olunmaz. Zemin etüdü yapılmamış bir inanç, fırtınada ilk yıkılacak prefabrik bir kulübeden farksızdır. Gerçek, sorgulanmaktan korkmaz; altını kazıdıkça parıldayan saf altın gibidir.",
   "outro_wisdom": {
     "lies": [
-      "YALAN: Ekranda görünen kişi, fiziksel olarak o odada bulunuyordur.",
-      "YALAN: Bir güvenlik kamerasında görünmemek, o koridordan geçmemiş olmak anlamına gelir.",
-      "YALAN: Bir tanığın mantıksal çıkarımı, her zaman doğru gözleme dayanır."
+      "Yanılgı: Herkesin kabul ettiği hazır fikirler ('Konfeksiyon') bizim zihnimize de tam oturur.",
+      "Yanılgı: İnançlarımızı sorgulamak onları zayıflatır veya tamamen yıkar.",
+      "Yanılgı: Dışarıdan kusursuz görünen vitrinler, içerideki çürük temelleri sonsuza dek gizleyebilir."
     ],
     "truths": [
-      "GERÇEK: Mantık, yanlış bir öncülden yola çıkarsa kaçınılmaz olarak yanlış bir sonuca varır.",
-      "GERÇEK: Göksel mekaniğin mantığı — yıldızların konumu, teleskopun takip açısı — asla safsata kabul etmez.",
-      "GERÇEK: Bir varsayımı sorgulamadan kabul etmek, en tehlikeli mantık hatasıdır."
+      "Hakikat: Kendi akıl süzgecimizden geçirmediğimiz her düşünce, zihnimizde başkasının adına kayıtlı bir kiracıdır.",
+      "Hakikat: Fikirlerimizi karot testine (sorgulamaya) tabi tutmak, onları yıkmak değil, sarsılmaz bir kaya zemine oturtmaktır.",
+      "Hakikat: Gerçek hakikat, üzerine ne kadar gidilirse gidilsin değerinden hiçbir şey kaybetmeyen saf altındır."
     ]
   },
-  "intro_text": "Şehrin en yüksek noktasındaki Gözlemevi'nin devasa kubbesine adımınızı attığınızda, buz gibi gece rüzgarı yüzünüze çarpıyor. Baş Astronom Prof. Dr. Tarık Yıldız, teleskop balkonundan aşağı itilerek komaya sokulmuş. Kendisi, şehirdeki yozlaşmış bir politikacının yasadışı uydu iletişimlerini ifşa edecek şifreli koordinatları bulmuştu ve bu veri çalındı. Dört şüphelinin hepsinin saat 22:30 için 'mantıklı' bir alibisi var. Ama mantık, yanlış bir varsayımla başlarsa yanlış sonuca varır. Gerçeği yıldızların değişmez kurallarında arayın.",
+  "intro_text": "Şehrin en lüks gökdeleni olan 'Seri Kule'nin açılış galasına saatler kala, binanın bodrumundaki beton test laboratuvarından acı bir haber gelir. Binanın zemin etüdü ve dayanıklılık raporunu hazırlayan Mimar Selim Kaya, kafasına vurulan sert bir cisimle öldürülmüş ve hazırladığı statik raporu yok edilmiştir. Gökdelenin dış cephesi ışıl ışıl parıldamakta ve davetliler yukarıda dans etmektedir. Ancak temelde bir şeyler çürüktür. Katil, bu çürük temeli örtbas etmek isteyen biri midir, yoksa kuledeki sahte tabloların sırrını korumaya çalışan bir sanat hırsızı mı? Eline fenerini al ve gerçeği ortaya çıkarmak için bu zihinsel kazıya başla.",
   "clues": [
     {
       "id": "clue_1",
-      "title": "Teleskopun Otomatik Takip Motoru",
-      "description": "Dev teleskop, belirli bir takım yıldızını takip edecek şekilde ayarlanmış. Takip motorunun dişli açısı ve yerkürenin dönüş hızı hesaplandığında, teleskopun tam 90 dakikadır kimse dokunmadan, yalnız başına dönüşüne devam ettiği anlaşılıyor.",
-      "image": "/assets/levels/level4/clue1.png",
-      "is_natural_clock": true,
-      "time_value": "90 dakika (takip süresi)"
+      "title": "Beton Karot Numunesi",
+      "description": "Mimar Selim'in elinde sıkıca tuttuğu, binanın C-4 kolonundan alınmış silindir şeklinde beton numunesi (karot). Laboratuvardaki pres testine sokulduğunda, standart basıncın çok altında tuzla buz olduğu görülüyor. Binanın taşıyıcı sistemi tamamen çürük betonla inşa edilmiştir (Zemin Etüdü ve Tahkik).",
+      "image": "/assets/levels/level4/clue_1.png",
+      "is_natural_clock": false,
+      "time_value": "1. Adım: Çürük Temel"
     },
     {
       "id": "clue_2",
-      "title": "Gözlemevi Kubbesi Kapanma Logu",
-      "description": "Kubbeli çatının elektronik motor logu: 'Sistem Hatası: Çatı mekanizması zorlanarak durduruldu.' Log, tam 22:30'da acil durum freninin çekildiğini ve sistemin donduğunu gösteriyor.",
-      "image": "/assets/levels/level4/clue2.png",
+      "title": "Hazır Giyim Ceket Lifleri",
+      "description": "Olay yerindeki kırık beton parçasının pürüzlü yüzeyine takılmış lacivert renkli kumaş lifleri. Laboratuvar analizinde bu liflerin seri üretim ('Konfeksiyon') ucuz polyester bir takıma ait olduğu belirlenmiştir. Galip Seri'nin gardırobundaki tüm takımlar ise özel terzi dikimidir.",
+      "image": "/assets/levels/level4/clue_2.png",
       "is_natural_clock": false,
-      "time_value": "22:30"
+      "time_value": "2. Adım: Taklit Kimlik"
     },
     {
       "id": "clue_3",
-      "title": "Kahve Fincanındaki Termodinamik Soğuma",
-      "description": "Astronomun çalışma masasındaki filtre kahvesinin yüzey gerilimi ve termal kamera ile ölçülen sıcaklık düşüş profili (Newton Soğuma Yasası), kahvenin tam olarak gece yarısı 00:00 saati referans alındığında, 90 dakika önce oda sıcaklığıyla dengeye gelmeye başladığını kanıtlıyor.",
-      "image": "/assets/levels/level4/clue3.png",
-      "is_natural_clock": true,
-      "time_value": "00:00 (Şu anki zaman referansı)"
+      "title": "Karot Test Cihazı Logu",
+      "description": "Laboratuvardaki bilgisayarda, hidrolik pres makinesinin en son test çalıştırma kaydı. Saat 22:15'te bir karot numunesinin kırılma testi başlatılmış ve 22:18'de zorla durdurulmuştur. Bu saat, katilin cinayetten hemen önce testi durdurup veriyi silmeye çalıştığı anı göstermektedir.",
+      "image": "/assets/levels/level4/clue_3.png",
+      "is_natural_clock": false,
+      "time_value": "3. Adım: Gerçeğin Karartılması"
     },
     {
       "id": "clue_4",
-      "title": "Güvenlik Kamerası Kör Nokta Zamanlayıcısı",
-      "description": "Koridordaki motorlu güvenlik kamerası her 5 dakikada bir pan yapıyor. Saat 22:25 ile 22:35 arasında kameranın kör noktasında kalan yangın merdiveni kapısından geçiş yapıldığına dair toz izleri mevcut.",
-      "image": "/assets/levels/level4/clue4.png",
+      "title": "Replika Tablolar",
+      "description": "Galeride sergilenen lüks tabloların arkasında 'Replika - Güvenlik Amaçlıdır' damgası bulunmuştur. [Masum Açıklama]: Değerli tabloların çalınma riskine karşı, gala öncesi sergide fotokopi/baskı replikalar kullanılması ve orijinallerinin kasada tutulması galerinin yasal güvenlik standardıdır.",
+      "image": "/assets/levels/level4/clue_4.png",
       "is_natural_clock": false,
-      "time_value": "22:30"
+      "is_red_herring": true
     },
     {
       "id": "clue_5",
-      "title": "Merve'nin Gözlüğü (Çeldirici)",
-      "description": "Balkonun kenarında, Asistan Merve'ye ait numaralı bir gözlük bulunmuştur. Bu gözlük, suçlu tarafından kasıtlı olarak oraya bırakılmıştır.",
-      "image": "/assets/levels/level4/clue5.png",
+      "title": "Bozuk Plak Çalar",
+      "description": "Lobi katındaki nostaljik plak çalarda sürekli aynı melodinin tekrar etmesi. [Masum Açıklama]: Cihazın okuyucu iğnesindeki aşınma nedeniyle plak takılmış ve aynı 3 saniyelik kısmı çalmaktadır. Herhangi bir şifre veya mesaj içermeyen mekanik bir arızadır.",
+      "image": "/assets/levels/level4/clue_5.png",
       "is_natural_clock": false,
-      "is_red_herring": true,
-      "time_value": null
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_6",
+      "title": "Prefabrik Şantiye Ofisi",
+      "description": "Şantiyenin arkasındaki derme çatma prefabrik şantiye kulübesinin rüzgardan tavanının uçmuş olması. [Masum Açıklama]: Geçici kullanım için kurulmuş temelsiz bir prefabrik yapıdır. Ana binanın yapısal bütünlüğü veya statiği ile hiçbir ilgisi yoktur.",
+      "image": "/assets/levels/level4/clue_6.png",
+      "is_natural_clock": false,
+      "is_red_herring": true
     }
   ],
   "suspects": [
     {
-      "id": "suspect_1",
-      "name": "Başkan Cemil Geçersiz",
-      "role": "Yozlaşmış Politikacı",
-      "motive": "Yasadışı uydu veri transferlerinin ifşa edilmesini önlemek ve politik kariyerini kurtarmak.",
-      "portrait": "/assets/levels/level4/suspect1.png",
-      "statement": "Ben saat 22:00 ile 23:00 arasında belediye binasında toplantıdaydım. Saat 22:30'da odamdaki ekrandan televizyon kanalına canlı bağlantı ile röportaj verdim. Televizyon kanalı logları beni orada gösteriyor.",
-      "alibi": "Cemil, canlı bağlantı logları ile alibi kurmaktadır. Ancak Cemil, röportajı 22:00'da derin sahte (deepfake) yapay zeka avatarı kullanarak evinden başlatmış, kendisi ise 22:15'te evden çıkıp gözlemevine gitmiştir. Ekranda onun konuştuğunu zanneden sunucu mantıksal bir safsataya düşmüştür. 22:30'da gözlemevindedir.",
+      "id": "suspect_galip",
+      "name": "Galip Seri",
+      "role": "Proje Müteahhidi",
+      "portrait": "/assets/levels/level4/suspect_galip.png",
+      "statement": "Olay gecesi 22:00-23:00 saatleri arasında yan binadaki lüks restoranda düzenlenen açılış galasındaydım. Kameralar ve gazeteciler beni orada çekti. Üzerimdeki bu özel tasarım terzi dikimi takım elbiseyle boy gösterdim. Selim'in raporuyla ilgim yok.",
+      "alibi": "Galip, gala saatinde davette olduğunu basına servis edilen fotoğraflarla kanıtlamaya çalışmaktadır. Ancak fotoğraflardaki takım elbisenin omuzlarında potluklar ve pot kesimler mevcuttur. Oysa Galip'in takım elbisesi terzi dikimidir.",
+      "motive": "Binanın temelsiz olduğunu ve çürük beton kullanıldığını ortaya çıkaran Mimar Selim'in raporunu engellemek, milyar dolarlık projeyi ve itibarını kurtarmak.",
       "is_guilty": true,
-      "guilty_reason": "Cemil, 22:00'de deepfake avatarını canlı yayına bağlayarak sahte bir alibi oluşturmuş, 22:15'te yangın merdivenini (kamera kör noktasını) kullanarak 22:30'da teleskop balkonuna ulaşmıştır. Veriyi çalmış, kurbanı itmiş ve Merve'nin gözlüğünü bırakarak iz sürmüştür. Kahve soğuma süresi ve teleskop motor açısı (90 dakika) hesaplandığında suç anı 22:30 olarak doğrulanır — tam da Cemil'in 'canlı yayında' olduğunu iddia ettiği an."
+      "guilty_reason": "Galip Seri, binanın temelsiz olduğunu ve çürük beton kullanıldığını ortaya çıkaran Mimar Selim'i öldürmüştür. Kendisine gala saatinde alibi oluşturmak için, kendi ölçülerine göre dikilmiş özel tasarım takım elbiseyi ('Terzi Dikimi') boy ve fizik olarak kendisine benzeyen şoförüne giydirip davete göndermiştir. Kendisi ise şoförünün sıradan hazır giyim ('Konfeksiyon') ceketini giyerek bodrum katındaki laboratuvara inmiş ve cinayeti işlemiştir. Ancak aceleyle kaçarken laboratuvardaki kırık beton pürüzlerine takılan hazır giyim ceketten lifler kalmıştır. Bu pot yapan, standart beden ceket Galip'in üzerine tam oturmamış ve gerçeği ortaya çıkarmıştır."
     },
     {
-      "id": "suspect_2",
-      "name": "Merve Önerme",
-      "role": "Araştırma Asistanı",
-      "motive": "Tezindeki verilerin hocası tarafından çalındığını iddia etmesi ve hakkını aramak istemesi.",
-      "portrait": "/assets/levels/level4/suspect2.png",
-      "statement": "Gözlüğüm nasıl oraya gitti bilmiyorum. Ben 22:15'te kütüphanede makale okuyordum. Kitap ödünç alma kayıtlarım 22:25'te sistemde var.",
-      "alibi": "Kütüphane RFID barkod sistemleri, Merve'nin saat 22:25'te şehir merkezindeki kütüphaneden kitap aldığını kesinlikle doğrulamaktadır. Olay yerindeki gözlüğü kasıtlı bırakılmıştır.",
+      "id": "suspect_canan",
+      "name": "Canan Kopya",
+      "role": "Sanat Galerisi Yöneticisi",
+      "portrait": "/assets/levels/level4/suspect_canan.png",
+      "statement": "Ben bütün akşam zemin kattaki galeride sergiye hazırlık yapıyordum. Mimar Selim Bey birkaç kez yanıma uğrayıp kolonların arkasındaki duvarları inceledi. Tabloların orijinal olup olmadığını sordu. Ben de ona sergilenenlerin replika olduğunu, orijinallerin depoda saklandığını söyledim.",
+      "alibi": "Sergi salonundaki güvenlik kameraları ve açılış hazırlığı yapan temizlik personeli onun 22:00-22:30 arasında galeride tablo düzenlediğini doğrulamaktadır.",
+      "motive": "Mimar Selim'in galerideki tablolara yakından bakıp onların replika olduğunu fark etmesi sonucu şüphe çekmiş, ancak replikaların güvenlik amaçlı sergilendiği ve yasal olduğu anlaşılmıştır.",
       "is_guilty": false,
-      "guilty_reason": null
+      "guilty_reason": ""
     },
     {
-      "id": "suspect_3",
-      "name": "Hale Kıyas",
-      "role": "Gazeteci",
-      "motive": "Bu büyük haberi patlatmak için verileri ele geçirip şöhret olma arzusu.",
-      "portrait": "/assets/levels/level4/suspect3.png",
-      "statement": "22:30'da başkanın televizyon röportajını izliyordum, adam ekrandaydı! Ben o sırada televizyon kanalının reji odasındaydım.",
-      "alibi": "Hale, odadaki kişinin avatar mı gerçek mi olduğunu ayırt edememiş, 'Ekranda konuşuyor' algısına dayanarak Cemil'in masum olduğunu varsaymıştır. Hale'nin reji odasında olduğu onlarca çalışan tarafından doğrulanmıştır.",
+      "id": "suspect_yasin",
+      "name": "Yasin Papağan",
+      "role": "Halkla İlişkiler Müdürü",
+      "portrait": "/assets/levels/level4/suspect_yasin.png",
+      "statement": "Seri Kule'nin tanıtımı için basına verilecek demeçleri hazırlıyordum. Selim Bey ile teknik konular hakkında hiç konuşmadım. Olay saatinde ofisimde basına dağıtılacak bülteni hazırlıyordum, her şeyi yönetim kurulunun bana dikte ettiği gibi yazdım.",
+      "alibi": "Ofis bilgisayarındaki log kayıtları ve güvenlik kameraları, onun olay saatinde odasında olduğunu ve bülten hazırladığını kesinleştirmektedir.",
+      "motive": "Yönetimden gelen her talimatı ve basın açıklamasını sorgulamadan kopyalayıp yayımlayan biri olması, ancak olay yeriyle veya cinayetle hiçbir fiziksel bağı olmaması.",
       "is_guilty": false,
-      "guilty_reason": null
-    },
-    {
-      "id": "suspect_4",
-      "name": "Kaan Öncül",
-      "role": "Gözlemevi Temizlikçisi",
-      "motive": "Ağır borçları nedeniyle şifreli diski çalıp karaborsada satma umudu.",
-      "portrait": "/assets/levels/level4/suspect4.png",
-      "statement": "O gece 22:00 ile 23:00 arasında tüm kameralar çalışıyordu, zemin katı temizliyordum. Üst kata hiç çıkmadım.",
-      "alibi": "Kaan'ın temizlik robotunun haritalama logları ve hareket sensörleri, onun suç anı olan 22:30'da zemin katta olduğunu kanıtlamaktadır.",
-      "is_guilty": false,
-      "guilty_reason": null
+      "guilty_reason": ""
     }
   ],
   "solution": {
-    "culprit": "Başkan Cemil Geçersiz",
-    "crime_time": "22:30",
-    "question": "Gözlemevi balkonundan kurbanı iterek verileri çalan kişi kimdir?",
+    "culprit": "Galip Seri",
+    "crime_time": "Beton Karot Numunesi -> Hazır Giyim Ceket Lifleri -> Karot Test Cihazı Logu",
+    "question": "Fiziksel kanıtlar ve alibiler değerlendirildiğinde, Mimar Selim'i bodrum katındaki laboratuvarda öldüren ve statik raporunu yok etmeye çalışan katil kimdir?",
     "options": [
-      "Başkan Cemil Geçersiz",
-      "Merve Önerme",
-      "Hale Kıyas",
-      "Kaan Öncül"
+      "Galip Seri (Proje Müteahhidi)",
+      "Canan Kopya (Sanat Galerisi Yöneticisi)",
+      "Yasin Papağan (Halkla İlişkiler Müdürü)"
     ],
-    "answer": "Başkan Cemil Geçersiz",
-    "proof": "Kahvedeki termodinamik soğuma eğrisi ve şu anki yerel saat (00:00) birleştirildiğinde suçun tam 90 dakika önce (22:30) işlendiği görülür. Teleskopun 90 dakikadır başıboş dönüşü bunu teyit eder. Başkan Cemil, tam bu saatte televizyon kanalında canlı yayında olduğunu iddia etmektedir. Ancak yayındaki görüntü, Cemil'in daha önceden kurduğu bir deepfake algoritmasıdır. Cemil fiziksel olarak o stüdyoda değildi — yangın merdivenini kullanarak kör noktadan gözlemevine girmiştir. Merve'nin gözlüğü ise Cemil tarafından kasıtlı olarak suç yerine bırakılmış bir çeldiricidir. Cemil'in alibisi, 'ekranda görünen kişi stüdyodadır' şeklindeki yanlış öncüle dayanan klasik bir mantık safsatasıdır."
+    "answer": "Galip Seri (Proje Müteahhidi)",
+    "proof": "Laboratuvardaki kırık beton pürüzlerinde bulunan ucuz konfeksiyon lifleri, katilin hazır giyim bir ceket giydiğini kanıtlar. Galip Seri, gala için şoförüne kendi özel terzi dikimi takımını giydirerek sahte alibi oluşturmuş, kendisi ise bu konfeksiyon ceketle cinayeti işlemiştir. Karot test makinesinin durdurulma saati (22:15) cinayet anını doğrular. Galip, 'her bedene uyan' hazır giyim (konfeksiyon) bir yalanı giyinerek kendini gizlemeye çalışmıştır. Tıpkı sorgulanmamış inançları taklit eden bir zihnin, dışarıdan mükemmel görünen ama ilk krizde yıkılan prefabrik yapılar kurması gibi. Ancak gerçeğe ulaşmak için yapılan zemin etüdü ve karot testi (tahkik), süslü vitrinlerin altındaki çürük betonları elbet açığa çıkarır. Hakikat, elenen kumların altındaki saf altın gibi, sorgulandıkça daha çok parıldar."
   }
 }
